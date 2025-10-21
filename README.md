@@ -1,0 +1,1 @@
+Mobile appplication side of of The Bedside Visual Guide project.
