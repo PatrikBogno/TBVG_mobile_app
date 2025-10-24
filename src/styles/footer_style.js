@@ -6,8 +6,8 @@ var style = React.StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: global_style.colors.secondary,
-        height: React.Dimensions.get("screen").height * 0.7,
+        backgroundColor: global_style.colors.primary,
+        height: React.Dimensions.get("screen").height * 0.15,
     },
 
     text: {
