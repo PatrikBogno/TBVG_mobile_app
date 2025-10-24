@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
-import style from "../../styles/main_style.js";
+import style from "../styles/main_style.js";
 
-function Page() {
+function Main() {
     return (
         <View style={style.container}>
             <Text style={style.text}>Test</Text>
@@ -9,4 +9,4 @@ function Page() {
     );
 }
 
-export default Page;
+export default Main;
