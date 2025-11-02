@@ -1,11 +1,14 @@
 import { View, Text } from "react-native";
-import style from "../styles/main_style.js";
+import style from "../styles/pages/main_page_style.js";
+import Components from "../components/components.js";
 
 function Main() {
 
     return (
-        <View style={style.container}>
-            <Text style={style.text}>Test</Text>
+        <View style={style.page_container}>
+            <Components.PageComponentContainer> 
+                <Text>Text</Text>
+            </Components.PageComponentContainer>
         </View>  
     );
 }
