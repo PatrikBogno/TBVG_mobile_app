@@ -6,7 +6,7 @@ function Main() {
     return (
         <View style={style.container}>
             <Text style={style.text}>Test</Text>
-        </View>    
+        </View>  
     );
 }
 
