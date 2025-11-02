@@ -1,10 +1,13 @@
 import React from "react";
-import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
-import { View, StatusBar } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { View } from "react-native";
 import Components from "../components/components";
 import style from "../styles/global_layout_style.js";
+import { useNavigation } from "@react-navigation/native";
 
-const GlobalLayout = ({ children }) => {
+const GlobalLayout = ({ children, current_route }) => {
+    const navigation = useNavigation();
+
     return (
         <View style={style.application_container}>
             <SafeAreaProvider>
@@ -16,7 +19,7 @@ const GlobalLayout = ({ children }) => {
                         { children }
                     </View>
                     <View style={style.footer}>
-                        <Components.Footer/>
+                        <Components.Footer navigation={ navigation } current_route={ current_route }/>
                     </View>
                 </SafeAreaView>
             </SafeAreaProvider>

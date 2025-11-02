@@ -1,13 +1,13 @@
 import { View, Text } from "react-native";
 import style from "../styles/main_style.js";
 
-function Main() {
+function EditDay() {
 
     return (
         <View style={style.container}>
-            <Text style={style.text}>Test</Text>
+            <Text style={style.text}>day</Text>
         </View>    
     );
 }
 
-export default Main;
+export default EditDay;

@@ -4,14 +4,16 @@ var React = require('react-native');
 
 const style = React.StyleSheet.create({
     application_container: {
+        flex: 1,
         height: React.Dimensions.get("screen").height,
         backgroundColor: global_style.colors.primary,
     },
     safe_view_container: {  
         flex: 1,
         height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        justifyContent: 'space-between',
         padding: 0,
     },
     header: {

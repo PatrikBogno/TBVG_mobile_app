@@ -14,22 +14,37 @@ var style = React.StyleSheet.create({
     },
 
     icon_menu_container: {
-        width: '80%',
+        width: '90%',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
     },  
 
-    icon_container: {
+    icon_button_container: {
         flex: 1,
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    icon_container: {
+        height: 50,
+        width: 50,
         justifyContent: 'center',
         alignItems: 'center',
     },
 
     icon: {
-        flex: 1,
         width: 40,
         height: 40,
+        strokeWidth: 1.5,
+    },  
+
+    active_page_icon: {
+        borderWidth: 2,
+        borderColor: global_style.colors.borders,
+        borderRadius: 20,
+        backgroundColor: global_style.colors.secondary
     },  
 })
 
