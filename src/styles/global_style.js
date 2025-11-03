@@ -7,6 +7,11 @@ const global_style = {
         details_light: '#ffffff',
         borders: '#80a198',
         text: '#000000',
+    },
+
+    fonts: {
+        header_size: 24,
+        family: 'ComicSansMS', 
     }
 };
 

@@ -12,6 +12,8 @@ var style = React.StyleSheet.create({
 
     text: {
         color: global_style.colors.text,
+        fontSize: global_style.fonts.header_size,
+        fontFamily: global_style.fonts.family,
     }
 })
 

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { NavigationContainer, useNavigationContainerRef } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import GlobalLayout from "./src/layouts/global_layout.jsx";
 import { Pages } from "./src/pages/pages.js";
+
+import useLoadFonts from "./src/hooks/load_font.js";
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -35,6 +36,7 @@ function RootStack() {
 }
 
 function App() {
+  const fontsLoaded = useLoadFonts();
 
   const navigationRef = useNavigationContainerRef();
   const [current_route, setCurrentRoute] = useState("Main");
