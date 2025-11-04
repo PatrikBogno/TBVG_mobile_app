@@ -14,10 +14,6 @@ var style = React.StyleSheet.create({
         alignItems: 'center',
         paddingBottom: '4%',
     },
-
-    text: {
-        color: global_style.colors.text,
-    }
 })
 
 module.exports = style;

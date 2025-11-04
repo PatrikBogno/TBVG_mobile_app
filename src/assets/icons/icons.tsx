@@ -82,4 +82,14 @@ export const Icons = {
       </Svg>
     );
   },
+
+  ArrowRight: ({ style }: IconProps) => {
+    const props = getSvgProps(style);
+    return (
+      <Svg {...props}>
+        <Path
+          d="M4 12h16m0 0-4-4m4 4-4 4"/>
+      </Svg>
+    );
+  },
 };

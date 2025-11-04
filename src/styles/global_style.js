@@ -11,6 +11,7 @@ const global_style = {
 
     fonts: {
         header_size: 24,
+        regurlar_size: 16,
         family: 'ComicSansMS', 
     }
 };
