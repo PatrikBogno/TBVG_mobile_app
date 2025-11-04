@@ -13,13 +13,14 @@ var style = React.StyleSheet.create({
 
     setting_name: {
         flex: 2,
-        color: global_style.colors.text,
-        fontFamily: global_style.fonts.family,
+        color: global_style.colors.menu_text,
+        fontFamily: global_style.fonts.family_text,
     },
 
     setting_name_text: {
         fontSize: global_style.fonts.regurlar_size,
-        fontFamily: global_style.fonts.family,
+        fontFamily: global_style.fonts.family_text,
+        color: global_style.colors.menu_text,
     },
 
     switch_container: {

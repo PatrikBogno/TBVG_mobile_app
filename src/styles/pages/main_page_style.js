@@ -16,8 +16,37 @@ var style = React.StyleSheet.create({
     },
 
     text: {
-        color: global_style.colors.text,
+        color: global_style.colors.menu_text,
+        marginRight: '5%',
+        marginLeft: '5%',
+        marginBottom: '5%',
+        fontFamily: global_style.fonts.family_text,
+        fontSize: global_style.fonts.menu_size,
+    },
+
+    text_nadpis: {
+        marginTop: '5%',
+        marginBottom: '5%',
+        marginLeft: '5%',
+        fontSize: global_style.fonts.header_size,
+        color: global_style.colors.topic_text,
+        fontFamily: global_style.fonts.family_topic,
+        fontSize: global_style.fonts.topic_size,
+    },
+
+    image_container: {
+        backgroundColor: global_style.colors.image_container_color,
+        borderRadius: '10%',
+        padding: '5%',
+        marginBottom: '5%',
+    },
+
+    image:{
+        width: '300',
+        height: '200',
+        borderRadius: 10,
     }
+
 })
 
 module.exports = style;

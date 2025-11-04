@@ -7,13 +7,14 @@ var style = React.StyleSheet.create({
         minHeight: 50,
         width: '92%',
         marginTop: '4%',
-        borderWidth: 2,
-        borderColor: global_style.colors.borders,
+        //borderWidth: 2,
+        //borderColor: global_style.colors.borders,
         borderRadius: 10,
-        backgroundColor: global_style.colors.primary,
+        backgroundColor: global_style.colors.menu_container,
         justifyContent: 'center',
         alignItems: 'center'
     },
+    
 });
 
 export default style;

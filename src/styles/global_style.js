@@ -1,18 +1,27 @@
 const global_style = {
+    
     colors: {
-        primary: '#afd5ca',
-        secondary: '#dbece7',
+        primary: 'rgba(165, 207, 196, 0.82)',
+        secondary: 'rgba(165, 207, 196, 0.4)',
+        menu_container: '#a5cfc4',
+        image_container_color: '#77bdaa',
         details_dark: '#629a96',
         details_neutral: '#88b7af',
         details_light: '#ffffff',
         borders: '#80a198',
         text: '#000000',
+        topic_text: '#1d1b20',
+        menu_text: '#49454f',
     },
 
     fonts: {
-        header_size: 24,
+        header_size: 18,
         regurlar_size: 16,
-        family: 'ComicSansMS', 
+        menu_size: 17,
+        topic_size: 24,
+        family: 'Syncopate',
+        family_text: 'Roboto',
+        family_topic: 'SansationLight', 
     }
 };
 
