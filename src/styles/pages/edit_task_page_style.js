@@ -5,7 +5,7 @@ var React = require('react-native');
 var style = React.StyleSheet.create({
     scroll_container: {
         minHeight: '100%',
-        backgroundColor: global_style.colors.secondary,
+        backgroundColor: global_style.colors.secondary_light,
     },
 
     page_container: {

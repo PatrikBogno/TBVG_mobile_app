@@ -11,7 +11,9 @@ var style = React.StyleSheet.create({
         backgroundColor: global_style.colors.primary,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: '4%'
+        elevation: 10,
+        shadowColor: global_style.colors.details_dark,
+        shadowRadius: 5,
     },
     
 });

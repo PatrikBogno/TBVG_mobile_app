@@ -5,7 +5,7 @@ const global_style = {
         secondary_dark: '#77bdaa',
         secondary_neutral: '#a5cfc4',
         secondary_light: '#dbece7',
-        details_dark: '#629a96',
+        details_dark: '#314d4bff',
         details_neutral: '#88b7af',
         details_light: '#ffffff',
         borders: '#80a198',

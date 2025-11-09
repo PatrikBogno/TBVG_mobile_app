@@ -45,7 +45,8 @@ var style = React.StyleSheet.create({
         backgroundColor: global_style.colors.secondary_dark,
         borderRadius: '8%',
         padding: '3%',
-        marginTop: '15%'
+        marginTop: '15%',
+        marginBottom: '5%'
     },
 
     image:{
