@@ -5,7 +5,7 @@ var React = require('react-native');
 var style = React.StyleSheet.create({
     scroll_container: {
         minHeight: '100%',
-        backgroundColor: global_style.colors.secondary,
+        backgroundColor: global_style.colors.secondary_light,
     },
 
     page_container: {
@@ -15,31 +15,37 @@ var style = React.StyleSheet.create({
         paddingBottom: '4%',
     },
 
-    text: {
-        color: global_style.colors.menu_text,
-        marginRight: '5%',
-        marginLeft: '5%',
-        marginBottom: '5%',
-        fontFamily: global_style.fonts.family_text,
-        fontSize: global_style.fonts.menu_size,
+    text_container: {
+        width: '90%',
+        marginTop: '5%',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
-    text_nadpis: {
-        marginTop: '5%',
-        marginBottom: '5%',
-        marginLeft: '5%',
-        fontSize: global_style.fonts.header_size,
+    text_title_container: {
+        paddingBottom: '5%'
+    },
+
+    text_title: {
         color: global_style.colors.topic_text,
-        fontFamily: global_style.fonts.family_topic,
         fontSize: global_style.fonts.topic_size,
+        fontFamily: global_style.fonts.family_topic,
+    },
+
+    text_paragraph: {
+        color: global_style.colors.menu_text,
+        fontFamily: global_style.fonts.family_text,
+        fontSize: global_style.fonts.menu_size,
+        textAlign: 'justify',
+        marginTop: '5%',
     },
 
     image_container: {
-        width: '90%',
-        backgroundColor: global_style.colors.image_container_color,
-        borderRadius: '10%',
-        padding: '4%',
-        margin: '4%',
+        width: '92%',
+        backgroundColor: global_style.colors.secondary_dark,
+        borderRadius: '8%',
+        padding: '3%',
+        marginTop: '15%'
     },
 
     image:{

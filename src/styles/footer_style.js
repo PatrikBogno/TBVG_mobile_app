@@ -44,7 +44,7 @@ var style = React.StyleSheet.create({
         borderWidth: 2,
         borderColor: global_style.colors.borders,
         borderRadius: 20,
-        backgroundColor: global_style.colors.secondary
+        backgroundColor: global_style.colors.secondary_light
     },  
 })
 

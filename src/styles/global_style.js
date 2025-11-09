@@ -2,9 +2,9 @@ const global_style = {
     
     colors: {
         primary: '#afd5ca',
-        secondary: '#dbece7',
-        menu_container: '#a5cfc4',
-        image_container_color: '#77bdaa',
+        secondary_dark: '#77bdaa',
+        secondary_neutral: '#a5cfc4',
+        secondary_light: '#dbece7',
         details_dark: '#629a96',
         details_neutral: '#88b7af',
         details_light: '#ffffff',
