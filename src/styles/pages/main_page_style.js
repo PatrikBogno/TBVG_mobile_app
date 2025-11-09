@@ -35,16 +35,18 @@ var style = React.StyleSheet.create({
     },
 
     image_container: {
+        width: '90%',
         backgroundColor: global_style.colors.image_container_color,
         borderRadius: '10%',
-        padding: '5%',
-        marginBottom: '5%',
+        padding: '4%',
+        margin: '4%',
     },
 
     image:{
-        width: '300',
+        width: '100%',
         height: '200',
         borderRadius: 10,
+        resizeMode: 'stretch',
     }
 
 })

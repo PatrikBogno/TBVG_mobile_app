@@ -1,8 +1,8 @@
 const global_style = {
     
     colors: {
-        primary: 'rgba(165, 207, 196, 0.82)',
-        secondary: 'rgba(165, 207, 196, 0.4)',
+        primary: '#afd5ca',
+        secondary: '#dbece7',
         menu_container: '#a5cfc4',
         image_container_color: '#77bdaa',
         details_dark: '#629a96',
