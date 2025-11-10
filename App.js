@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
+
 import GlobalLayout from "./src/layouts/global_layout.jsx";
 import { Pages } from "./src/pages/pages.js";
 

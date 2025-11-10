@@ -4,6 +4,7 @@ import PageComponentContainer from "./page_component_container";
 import SettingSwitch from "./setting_switch";
 import SettingDivider from "./settign_divider";
 import SettingSubmenuOpener from "./setting_submenu_opener";
+import AppText from "./custom_text"
 
 const Components = {
     Header,
@@ -12,6 +13,7 @@ const Components = {
     SettingSwitch,
     SettingDivider,
     SettingSubmenuOpener,
+    AppText
 };
 
 export default Components;
