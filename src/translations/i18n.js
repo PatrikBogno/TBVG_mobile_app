@@ -27,7 +27,7 @@ i18next
     // --- Language Detection ---
     // Use the language we detected from the device
     // lng: bestLanguage?.languageTag || 'en', 
-    lng: 'en',
+    lng: 'sk',
     fallbackLng: 'en', // Use 'en' if detected language is not available
 
     // --- Other Options ---

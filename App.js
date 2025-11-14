@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { NavigationContainer, useNavigationContainerRef } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { View } from "react-native";
 
+import * as SystemUI from "expo-system-ui";
+import * as SplashScreen from "expo-splash-screen";
+import * as NavigationBar from "expo-navigation-bar"; 
 
 import GlobalLayout from "./src/layouts/global_layout.jsx";
 import { Pages } from "./src/pages/pages.js";
-
-import useLoadFonts from "./src/hooks/load_font.js";
+import useLoadFonts from "./src/hooks/load_font";
+import global_style from "./src/styles/global_style.js";
+import { Host } from "react-native-portalize";
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
-
 
 function MainTabFlow() {
   return (
@@ -36,32 +40,47 @@ function RootStack() {
   );
 }
 
-function App() {
+export default function App() {
   const fontsLoaded = useLoadFonts();
-
   const navigationRef = useNavigationContainerRef();
-  const [current_route, setCurrentRoute] = useState("Main");
+  const [currentRoute, setCurrentRoute] = useState("Main");
+
+  useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
+    SystemUI.setBackgroundColorAsync('transparent');
+
+    NavigationBar.setButtonStyleAsync('dark');
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null; 
+  }
 
   return (
-    <NavigationContainer
-      ref={navigationRef}
-      onReady={() => {
-        const currentRouteName = navigationRef.current?.getCurrentRoute()?.name;
-        setCurrentRoute(currentRouteName);
-      }}
-      onStateChange={async () => {
-        const currentRouteName = navigationRef.current?.getCurrentRoute()?.name;
-        
-        if (currentRouteName) {
-          setCurrentRoute(currentRouteName);
-        }
-      }}
-    >
-      <GlobalLayout current_route={current_route}>
-        <RootStack />
-      </GlobalLayout>
-    </NavigationContainer>
+    <Host>
+      <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={() => {
+            const current = navigationRef.current?.getCurrentRoute()?.name;
+            setCurrentRoute(current);
+          }}
+          onStateChange={() => {
+            const current = navigationRef.current?.getCurrentRoute()?.name;
+            if (current) setCurrentRoute(current);
+          }}
+        >
+          <GlobalLayout current_route={currentRoute}>
+            <RootStack />
+          </GlobalLayout>
+        </NavigationContainer>
+      </View>
+    </Host>
   );
 }
-
-export default App;

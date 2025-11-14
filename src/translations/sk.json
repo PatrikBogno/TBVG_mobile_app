@@ -3,5 +3,13 @@
     "title": "Vítame Vás!",
     "paragraph_1": "Pomocou tejto aplikácie a ESP škatuľky dokážete naplánovať deň pre svoje dieťa a to jednoducho za pomoci obrázkov, ktoré dieťaťu ukážu, aké aktivity sa počas daného dňa budú vykonávať.",
     "paragraph_2": "Pri výbere obrázkov máte na výber z dvoch možností a to predpripravený obrázok alebo možnosť nahrať vlastný obrázok."
+  },
+  "settings": {
+    "app": {
+      "dark_mode": "Tmavý mód",
+      "notifications": "Upozornenia",
+      "colorblind": "Farboslepý mód",
+      "language": "Zvolený jazyk"
+    }
   }
 }
