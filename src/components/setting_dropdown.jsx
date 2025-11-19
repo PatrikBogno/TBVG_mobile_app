@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import SelectLanguage from './language_select.tsx';
-import i18n from '../translations/i18n.js'; 
+import { i18n } from '../translations/i18n.js'; 
 import global_style from '../styles/global_style.js';
 //import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -19,31 +19,36 @@ const local_data = [
 ];
 
 const LanguageSelect = () => {
-  const [language, setLanguage] = useState(i18n.language || 'en');
+  const [selectedLang, setSelectedLang] = useState('sk');
 
-  useEffect(() => {
-    const loadLanguage = async () => {
-      const savedLang = await AsyncStorage.getItem('appLanguage');
-      if (savedLang && savedLang !== language) {
-        setLanguage(savedLang);
-        i18n.changeLanguage(savedLang);
-      }
-    };
-    loadLanguage();
+    useEffect(() => {
+    (async () => {
+      const settings = await StorageService.getItem("app_settings");
+      const lang = settings?.language || "en";
+      setSelectedLang(lang);
+    })();
   }, []);
 
-  const handleChange = async (item) => {
-    const selectedLang = item.value;
-    setLanguage(selectedLang);
-    await i18n.changeLanguage(selectedLang);
-    //await AsyncStorage.setItem('appLanguage', selectedLang);
+  // Handle language change
+  const handleLanguageChange = async (item) => {
+    var selected = item.value;
+    setSelectedLang(selected);
+
+    // Save to storage
+    await StorageService.updateItem("app_settings", {
+      language: selected,
+    });
+
+    // Update i18n runtime language
+    console.log("selected: " + selected);
+    await i18n.changeLanguage(selected);
   };
 
   return (
     <SelectLanguage
-      value={language}
+      value={selectedLang}
       data={local_data}
-      onChange={handleChange}
+      onChange={handleLanguageChange}
     />
   );
 };

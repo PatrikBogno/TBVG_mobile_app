@@ -174,7 +174,7 @@ const SelectLanguage = ({
                 onPress={() => setVisible(false)}
                 style={styles.closeButton}
               >
-                <AppText tKey={TranslationKeys.SETTING_APP_LANGUAGE_CLOSE}/>
+                <AppText tKey={TranslationKeys.SETTING_APP_LANGUAGE_CLOSE} tOptions={undefined} custom_style={undefined} children={undefined}/>
               </TouchableOpacity>
             </View>
           </TouchableOpacity>

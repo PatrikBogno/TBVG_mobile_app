@@ -1,42 +1,40 @@
-import i18next from 'i18next';
-import { initReactI18next } from 'react-i18next';
-//import * as RNLocalize from 'react-native-localize';
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import StorageService from "../helpers/storage_service";
 
-// Import your translation files
-import en from './en.json';
-import sk from './sk.json';
+// Import translations
+import en from "./en.json";
+import sk from "./sk.json";
 
-// Define the available languages
+// Available languages
 const availableLanguages = {
   en: { translation: en },
   sk: { translation: sk },
 };
 
-// Find the best available language from the device's preferences
-//const bestLanguage = RNLocalize.findBestLanguageTag(
-//  Object.keys(availableLanguages)
-//);
+export async function initializeI18n() {
+  // Load saved settings
+  const savedSettings = await StorageService.getItem("appSettings");
+  const savedLanguage = savedSettings?.language || "en";  // fallback
 
-i18next
-  .use(initReactI18next) // Passes i18next down to react-i18next
-  .init({
-    // --- Standard Config ---
-    resources: availableLanguages,
-    compatibilityJSON: 'v3', // Crucial for React Native
-    
-    // --- Language Detection ---
-    // Use the language we detected from the device
-    // lng: bestLanguage?.languageTag || 'en', 
-    lng: 'sk',
-    fallbackLng: 'en', // Use 'en' if detected language is not available
+  console.log("Loading language:", savedLanguage);
 
-    // --- Other Options ---
-    interpolation: {
-      escapeValue: false, // React already escapes values (prevents XSS)
-    },
-    react: {
-      useSuspense: false, // Recommended for React Native
-    },
-  });
+  await i18next
+    .use(initReactI18next)
+    .init({
+      resources: availableLanguages,
+      compatibilityJSON: "v3",
+      lng: savedLanguage,
+      fallbackLng: "en",
+      interpolation: {
+        escapeValue: false,
+      },
+      react: {
+        useSuspense: false,
+      },
+    });
+
+  return i18next;
+}
 
 export default i18next;

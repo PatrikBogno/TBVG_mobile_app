@@ -3,7 +3,7 @@ import { NavigationContainer, useNavigationContainerRef } from "@react-navigatio
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { View } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 
 import * as SystemUI from "expo-system-ui";
 import * as SplashScreen from "expo-splash-screen";
@@ -14,6 +14,8 @@ import { Pages } from "./src/pages/pages.js";
 import useLoadFonts from "./src/hooks/load_font";
 import global_style from "./src/styles/global_style.js";
 import { Host } from "react-native-portalize";
+import StorageService from "./src/helpers/storage_service.js";
+import { initializeI18n } from "./src/translations/i18n.js";
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -43,6 +45,7 @@ function RootStack() {
 export default function App() {
   const fontsLoaded = useLoadFonts();
   const navigationRef = useNavigationContainerRef();
+  const [loaded, setLoaded] = useState(false);
   const [currentRoute, setCurrentRoute] = useState("Main");
 
   useEffect(() => {
@@ -51,6 +54,17 @@ export default function App() {
 
     NavigationBar.setButtonStyleAsync('dark');
   }, []);
+
+  useEffect(() => {
+  (async () => {
+    console.log("Starting i18n init…");
+
+    await initializeI18n(); 
+
+    console.log("i18n successfully initialized.");
+    setLoaded(true);
+  })();
+}, []);
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -61,6 +75,8 @@ export default function App() {
   if (!fontsLoaded) {
     return null; 
   }
+
+  if (!loaded) return <ActivityIndicator/>;
 
   return (
     <Host>
