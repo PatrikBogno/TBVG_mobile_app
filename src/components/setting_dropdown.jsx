@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
-import SelectLanguage from './language_select.js';
+import SelectLanguage from './language_select.tsx';
 import i18n from '../translations/i18n.js'; 
 import global_style from '../styles/global_style.js';
 //import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -8,7 +8,7 @@ import global_style from '../styles/global_style.js';
 const local_data = [
   {
     value: 'sk',
-    label: 'Slovak',
+    label: 'Slovenčina',
     image: { uri: 'https://flagsapi.com/SK/flat/64.png' },
   },
   {

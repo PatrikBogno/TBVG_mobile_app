@@ -9,7 +9,11 @@
       "dark_mode": "Tmavý mód",
       "notifications": "Upozornenia",
       "colorblind": "Farboslepý mód",
-      "language": "Zvolený jazyk"
+      "language": "Zvolený jazyk",
+      "language_popup": {
+        "search": "Vyhľadať ...",
+        "close": "Zavrieť"
+      }
     }
   }
 }

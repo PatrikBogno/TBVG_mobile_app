@@ -9,5 +9,7 @@ export enum TranslationKeys {
     SETTING_APP_DARK_MODE = 'settings.app.dark_mode',
     SETTING_APP_NOTIFICATIONS = 'settings.app.notifications',
     SETTING_APP_COLORBLIND = 'settings.app.colorblind',
-    SETTING_APP_LANGUAGE = 'settings.app.language'
+    SETTING_APP_LANGUAGE = 'settings.app.language',
+    SETTING_APP_LANGUAGE_SEARCH = 'settings.app.language_popup.search',
+    SETTING_APP_LANGUAGE_CLOSE = 'settings.app.language_popup.close',
 }

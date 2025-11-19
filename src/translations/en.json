@@ -9,7 +9,11 @@
       "dark_mode": "Dark mode",
       "notifications": "Notifications",
       "colorblind": "Colorblind mode",
-      "language": "Language"
+      "language": "Language",
+      "language_popup": {
+        "search": "Search ...",
+        "close": "Close"
+      }
     }
   }
 }
