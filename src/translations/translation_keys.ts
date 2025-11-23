@@ -12,4 +12,14 @@ export enum TranslationKeys {
     SETTING_APP_LANGUAGE = 'settings.app.language',
     SETTING_APP_LANGUAGE_SEARCH = 'settings.app.language_popup.search',
     SETTING_APP_LANGUAGE_CLOSE = 'settings.app.language_popup.close',
+
+    SETTING_ESP_SOUND_NOTIFICATIONS = 'settings.esp.sound.notifications',
+    SETTING_ESP_SOUND_VOLUME = 'settings.esp.sound.volume',
+    SETTING_ESP_SOUND_SOUND_OPTION = 'settings.esp.sound.sound_option',
+    SETTING_ESP_DISPLAY_BRIGHTNESS = 'settings.esp.display.brightness',
+    SETTING_ESP_DISPLAY_DYNAMIC_BRIGHTNESS = 'settings.esp.display.dynamic_brightness',
+    SETTING_ESP_DISPLAY_DESIGN = 'settings.esp.display.design',
+    SETTING_ESP_DISPLAY_LANGUAGE = 'settings.esp.display.language',
+
+
 }

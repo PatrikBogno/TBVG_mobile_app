@@ -14,6 +14,19 @@
         "search": "Search ...",
         "close": "Close"
       }
+    },
+    "esp": {
+      "sound": {
+        "notification": "Notification",
+        "volume": "Volume",
+        "sound_option": "Sound option"
+      },
+      "display": {
+        "brightness": "Brightness",
+        "dynamic_brightness": "Dynamic brightness",
+        "design": "Design",
+        "language": "Language"
+      }
     }
   }
 }

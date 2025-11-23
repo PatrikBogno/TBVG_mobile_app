@@ -11,11 +11,18 @@ function Settings() {
                 <Components.PageComponentContainer> 
                     <SelectCountryScreen/>
                     <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_DARK_MODE}/>
+                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_DARK_MODE} storageKey="app_dark_mode"/>
                     <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_COLORBLIND}/>
+                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_COLORBLIND} storageKey="app_colorblind_mode"/>
                     <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_NOTIFICATIONS}/>
+                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_NOTIFICATIONS} storageKey="app_notifictions"/>
+                </Components.PageComponentContainer>
+                <Components.PageComponentContainer> 
+                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_DARK_MODE} storageKey="app_dark_mode"/>
+                    <Components.SettingDivider/>
+                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_COLORBLIND} storageKey="app_colorblind_mode"/>
+                    <Components.SettingDivider/>
+                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_NOTIFICATIONS} storageKey="app_notifictions"/>
                 </Components.PageComponentContainer>
             </View>  
         </ScrollView>

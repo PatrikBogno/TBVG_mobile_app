@@ -26,21 +26,24 @@ class StorageService {
 
   // Update existing data (merge)
   static async updateItem(key, newValue) {
-    try {
-      const existing = await StorageService.getItem(key);
+  try {
+    let existing = await StorageService.getItem(key);
 
-      const updated = {
-        ...existing,
-        ...newValue
-      };
-
-      await AsyncStorage.setItem(key, JSON.stringify(updated));
-      return updated;
-    } catch (error) {
-      console.error("Error updating data:", error);
-      return null;
+    // Ensure it's always an object
+    if (typeof existing !== 'object' || existing === null) {
+      existing = {};
     }
+
+    const updated = { ...existing, ...newValue };
+
+    await AsyncStorage.setItem(key, JSON.stringify(updated));
+
+    return updated;
+  } catch (error) {
+    console.error("Error updating data:", error);
+    return null;
   }
+}
 
   // Remove a key from storage
   static async removeItem(key) {

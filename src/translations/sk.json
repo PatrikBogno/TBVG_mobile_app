@@ -14,6 +14,19 @@
         "search": "Vyhľadať ...",
         "close": "Zavrieť"
       }
+    },
+    "esp": {
+      "sound": {
+        "notification": "Upozornenia",
+        "volume": "Hlasitosť",
+        "sound_option": "Zvuk upozornenia"
+      },
+      "display": {
+        "brightness": "Jas",
+        "dynamic_brightness": "Dynamiký jas",
+        "design": "Dizajn",
+        "language": "Zvolený jazyk"
+      }
     }
   }
 }

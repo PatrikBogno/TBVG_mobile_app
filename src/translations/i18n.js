@@ -14,7 +14,7 @@ const availableLanguages = {
 
 export async function initializeI18n() {
   // Load saved settings
-  const savedSettings = await StorageService.getItem("appSettings");
+  const savedSettings = await StorageService.getItem("app_settings");
   const savedLanguage = savedSettings?.language || "en";  // fallback
 
   console.log("Loading language:", savedLanguage);
