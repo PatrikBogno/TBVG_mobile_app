@@ -11,6 +11,8 @@ var style = React.StyleSheet.create({
         width: React.Dimensions.get("screen").width,
         alignItems: 'center',
         justifyContent: 'center',
+        borderTopWidth: 2,
+        borderTopColor: global_style.colors.borders
     },
 
     icon_menu_container: {

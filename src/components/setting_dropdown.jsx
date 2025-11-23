@@ -1,84 +1,92 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet } from 'react-native';
-import SelectLanguage from './language_select.tsx';
-import i18next from '../translations/i18n.js'; 
-import global_style from '../styles/global_style.js';
-import StorageService from '../helpers/storage_service.js';
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import StorageService from "../helpers/storage_service.js";
+import AppText from "./custom_text.jsx";
+import { DropdownHelpers } from "../helpers/dropdown_helper.js";
+import SelectLanguage from "./language_select.tsx";
+import DropdownDesign from "./design_select.tsx";
+import DropdownSound from "./sound_select.tsx";
 
-const local_data = [
-  {
-    value: 'sk',
-    label: 'Slovenčina',
-    image: { uri: 'https://flagsapi.com/SK/flat/64.png' },
-  },
-  {
-    value: 'en',
-    label: 'English',
-    image: { uri: 'https://flagsapi.com/GB/flat/64.png' },
-  },
-];
+function SettingDropdown({
+  tKey,
+  storageKey,
+  field,
+  data = [],
+  helperKey,           
+}) {
+  const [selected, setSelected] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+  var DropdownComponent = null;
 
-const LanguageSelect = () => {
-  const [selectedLang, setSelectedLang] = useState('sk');
+  if (helperKey == "language") {
+    DropdownComponent = SelectLanguage;
+  }
+  else if (helperKey == "design"){
+    DropdownComponent = DropdownDesign;
+  }
+  else if (helperKey == "sound"){
+    DropdownComponent = DropdownSound;
+  }
+  else {
+    return null;
+  }
 
-    useEffect(() => {
-    (async () => {
-      const settings = await StorageService.getItem("app_settings");
-      const lang = settings?.language || "en";
-      setSelectedLang(lang);
-    })();
-  }, []);
+  useEffect(() => {
+    const loadSetting = async () => {
+      const stored = await StorageService.getItem(storageKey);
 
-  // Handle language change
-  const handleLanguageChange = async (item) => {
-    var selected = item.value;
+      let storedValue = null;
 
-    setSelectedLang(selected);
+      if (stored && typeof stored === "object" && field) {
+        storedValue = stored[field];
+      } else {
+        storedValue = stored;
+      }
 
-    await StorageService.updateItem("app_settings", {
-      language: selected,
-    });
+      if (storedValue !== null) setSelected(storedValue);
+      else if (data.length > 0) setSelected(data[0].value);
 
-    await i18next.changeLanguage(selected);
+      setLoaded(true);
+    };
+
+    loadSetting();
+  }, [storageKey, data, field]);
+
+  const handleChange = async (item) => {
+    const value = item.value;
+    setSelected(value);
+
+    if (field) {
+      await StorageService.updateItem(storageKey, { [field]: value });
+    } else {
+      await StorageService.setItem(storageKey, value);
+    }
+
+    if (helperKey && DropdownHelpers[helperKey]) {
+      await DropdownHelpers[helperKey](item);
+    }
   };
 
+  if (!loaded) return null;
 
   return (
-    <SelectLanguage
-      value={selectedLang}
-      data={local_data}
-      onChange={handleLanguageChange}
-    />
+    <View style={styles.container}>
+      {tKey && <AppText tKey={tKey} custom_style={styles.label} />}
+      <DropdownComponent
+        value={selected}
+        data={data}
+        onChange={handleChange}
+      />
+    </View>
   );
-};
+}
 
-export default LanguageSelect;
+export default SettingDropdown;
 
 const styles = StyleSheet.create({
-  dropdown: {
-    height: 50,
-    width: '80%',
+  label: { 
+    marginTop: '4%',
+    marginLeft: '5%',
+    fontSize: 16 
   },
-  imageStyle: {
-    width: 24,
-    height: 24,
-  },
-  placeholderStyle: {
-    fontSize: 16,
-  },
-  selectedTextStyle: {
-    fontSize: 16,
-    marginLeft: 8,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
-  },
-  inputSearchStyle: {
-    height: 40,
-    fontSize: 16,
-  },
-  containerStyle: {
-    //backgroundColor: global_style.colors.secondary_neutral,
-  }
 });

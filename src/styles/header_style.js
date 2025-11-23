@@ -8,6 +8,8 @@ var style = React.StyleSheet.create({
         width: React.Dimensions.get("screen").width,
         alignItems: 'center',
         justifyContent: 'center',   
+        borderBottomWidth: 2,
+        borderBottomColor: global_style.colors.borders
     },
 
     text: {

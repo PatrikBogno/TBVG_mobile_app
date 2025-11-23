@@ -6,6 +6,7 @@
   },
   "settings": {
     "app": {
+      "title": "Nastavenia aplikácie",
       "dark_mode": "Tmavý mód",
       "notifications": "Upozornenia",
       "colorblind": "Farboslepý mód",
@@ -16,17 +17,19 @@
       }
     },
     "esp": {
+      "title":"Nastavenia esp",
       "sound": {
-        "notification": "Upozornenia",
+        "notifications": "Upozornenia",
         "volume": "Hlasitosť",
         "sound_option": "Zvuk upozornenia"
       },
       "display": {
         "brightness": "Jas",
-        "dynamic_brightness": "Dynamiký jas",
+        "dynamic_brightness": "Dynamický jas",
         "design": "Dizajn",
         "language": "Zvolený jazyk"
-      }
+      },
+      "save": "Uložiť nastavenia na esp"
     }
   }
 }

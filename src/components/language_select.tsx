@@ -11,7 +11,7 @@ import {
   TextStyle,
   ViewStyle,
   StyleProp,
-  ListRenderItem, // Imported to fix the renderItem typing error
+  ListRenderItem,
 } from 'react-native';
 import { Portal } from 'react-native-portalize';
 import global_style from '../styles/global_style';
@@ -127,7 +127,7 @@ const SelectLanguage = ({
 
         <TouchableOpacity 
           onPress={() => setVisible(true)}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} // Makes it easier to tap
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         >
           <Image
             source={ic_down}

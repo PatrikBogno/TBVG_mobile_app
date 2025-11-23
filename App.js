@@ -57,11 +57,7 @@ export default function App() {
 
   useEffect(() => {
   (async () => {
-    console.log("Starting i18n init…");
-
     await initializeI18n(); 
-
-    console.log("i18n successfully initialized.");
     setLoaded(true);
   })();
 }, []);

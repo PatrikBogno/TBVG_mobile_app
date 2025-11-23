@@ -6,6 +6,7 @@
   },
   "settings": {
     "app": {
+      "title": "Application settings",
       "dark_mode": "Dark mode",
       "notifications": "Notifications",
       "colorblind": "Colorblind mode",
@@ -16,8 +17,9 @@
       }
     },
     "esp": {
+      "title":"Esp settings",
       "sound": {
-        "notification": "Notification",
+        "notifications": "Notifications",
         "volume": "Volume",
         "sound_option": "Sound option"
       },
@@ -26,7 +28,8 @@
         "dynamic_brightness": "Dynamic brightness",
         "design": "Design",
         "language": "Language"
-      }
+      },
+      "save": "Save settings to esp"
     }
   }
 }

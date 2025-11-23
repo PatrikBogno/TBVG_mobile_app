@@ -5,28 +5,46 @@ import style from "../styles/setting_switch.js";
 import AppText from './custom_text.jsx';
 import StorageService from "../helpers/storage_service.js";
 
-function SettingSwitch({ tKey, storageKey }) {
+function SettingSwitch({ tKey, storageKey, field }) {
     const [isEnabled, setIsEnabled] = useState(false);
-    const [loaded, setLoaded] = useState(false); 
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const loadSetting = async () => {
-            const savedValue = await StorageService.getItem(storageKey);
-            if (savedValue !== null) {
-                setIsEnabled(savedValue);
+            const stored = await StorageService.getItem(storageKey);
+
+            let storedValue = null;
+
+            if (stored && typeof stored === "object" && field) {
+                storedValue = stored[field];
+            } else {
+                storedValue = stored;
             }
+
+            if (storedValue !== null) {
+                setIsEnabled(storedValue);
+            }
+
             setLoaded(true);
         };
+
         loadSetting();
-    }, [storageKey]);
+    }, [storageKey, field]);
 
     const toggleSwitch = async () => {
         const newValue = !isEnabled;
         setIsEnabled(newValue);
-        await StorageService.setItem(storageKey, newValue);
+
+        if (field) {
+            // Update only the specific field inside object
+            await StorageService.updateItem(storageKey, { [field]: newValue });
+        } else {
+            // Save raw boolean
+            await StorageService.setItem(storageKey, newValue);
+        }
     };
 
-    if(!loaded) return null;
+    if (!loaded) return null;
 
     return (
         <View style={style.container}>

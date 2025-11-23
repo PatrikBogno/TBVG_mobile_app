@@ -14,6 +14,10 @@ var style = React.StyleSheet.create({
         alignItems: 'center',
         paddingBottom: '4%',
     },
+
+    settings_title: {
+        fontSize: global_style.fonts.header_size,
+    }
 })
 
 module.exports = style;

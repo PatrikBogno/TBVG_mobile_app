@@ -14,10 +14,8 @@ const availableLanguages = {
 
 export async function initializeI18n() {
   // Load saved settings
-  const savedSettings = await StorageService.getItem("app_settings");
+  const savedSettings = await StorageService.getItem("appSettings");
   const savedLanguage = savedSettings?.language || "en";  // fallback
-
-  console.log("Loading language:", savedLanguage);
 
   await i18next
     .use(initReactI18next)
