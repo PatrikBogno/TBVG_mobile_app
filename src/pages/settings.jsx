@@ -17,7 +17,7 @@ const designs = [
 ];
 
 const sounds = [
-    { value: "sound1", label: "Scibidy toilet", sound: "placeholder"}, //sound will be link to sound file, dont care about this
+    { value: "sound1", label: "Scibidy toilet", sound: "placeholder"}, 
     { value: "sound2", label: "Bruh sound", sound: "placeholder"},
     { value: "sound3", label: "Bing chilling", sound: "placeholder"},
 ]
@@ -26,55 +26,51 @@ function Settings() {
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={style.scroll_container}>
             <View style={style.page_container}>
-                <Components.PageComponentContainer>
-                    <Components.AppText tKey={TranslationKeys.SETTING_APP_TITLE} custom_style={style.settings_title}/>
-                </Components.PageComponentContainer>
-                <Components.PageComponentContainer> 
-                    <Components.SettingDropdown
+                <Components.ComponentContainer>
+                    <Components.LowLevelComponents.Text tKey={TranslationKeys.SETTING_APP_TITLE} custom_style={style.settings_title}/>
+                </Components.ComponentContainer>
+                <Components.ComponentContainer> 
+                    <Components.DropdownMenu
                         tKey={TranslationKeys.SETTING_APP_LANGUAGE}
-                        storageKey="appSettings"
+                        sKey="appSettings"
                         field="language"
                         helperKey="language"       
-                        data={languages}
-                    />
-                    <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_DARK_MODE} storageKey="appSettings" field="app_dark_mode"/>
-                    <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_COLORBLIND} storageKey="appSettings" field="app_colorblind_mode"/>
-                    <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_APP_NOTIFICATIONS} storageKey="appSettings" field="app_notifictions"/>
-                </Components.PageComponentContainer>
-                <Components.PageComponentContainer>
-                    <Components.AppText tKey={TranslationKeys.SETTING_ESP_TITLE} custom_style={style.settings_title}/>
-                </Components.PageComponentContainer>
-                <Components.PageComponentContainer> 
-                    <Components.SettingDropdown 
+                        data={languages}/>
+                    <Components.Divider/>
+                    <Components.Switch tKey={TranslationKeys.SETTING_APP_DARK_MODE} sKey="appSettings" field="app_dark_mode"/>
+                    <Components.Divider/>
+                    <Components.Switch tKey={TranslationKeys.SETTING_APP_COLORBLIND} sKey="appSettings" field="app_colorblind_mode"/>
+                    <Components.Divider/>
+                    <Components.Switch tKey={TranslationKeys.SETTING_APP_NOTIFICATIONS} sKey="appSettings" field="app_notifictions"/>
+                </Components.ComponentContainer>
+                <Components.ComponentContainer>
+                    <Components.LowLevelComponents.Text tKey={TranslationKeys.SETTING_ESP_TITLE} custom_style={style.settings_title}/>
+                </Components.ComponentContainer>
+                <Components.ComponentContainer> 
+                    <Components.DropdownMenu 
                         tKey={TranslationKeys.SETTING_ESP_DISPLAY_DESIGN} 
-                        storageKey="espSettings" 
+                        sKey="espSettings" 
                         field="esp_design"
                         helperKey="design"
                         data={designs}/>
-                    <Components.SettingDivider/>
-                    <Components.SettingSlider tKey={TranslationKeys.SETTING_ESP_DISPLAY_BRIGHTNESS} storageKey="espSettings" field="esp_brightness"/>
-                    <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_ESP_DISPLAY_DYNAMIC_BRIGHTNESS} storageKey="espSettings" field="esp_dynamic_brightness"/>
-                    <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_ESP_SOUND_NOTIFICATIONS} storageKey="espSettings" field="esp_notificaiton"/>
-                    <Components.SettingDivider/>
-                    <Components.SettingSlider tKey={TranslationKeys.SETTING_ESP_SOUND_VOLUME} storageKey="espSettings" field="esp_volume"/>
-                    <Components.SettingDivider/>
-                    <Components.SettingSwitch tKey={TranslationKeys.SETTING_ESP_SOUND_SOUND_OPTION} storageKey="espSettings" field="esp_sound_option"/>
-                    <Components.SettingDivider/>
-                    <Components.SettingDropdown
+                    <Components.Divider/>
+                    <Components.Slider tKey={TranslationKeys.SETTING_ESP_DISPLAY_BRIGHTNESS} sKey="espSettings" field="esp_brightness"/>
+                    <Components.Divider/>
+                    <Components.Switch tKey={TranslationKeys.SETTING_ESP_DISPLAY_DYNAMIC_BRIGHTNESS} sKey="espSettings" field="esp_dynamic_brightness"/>
+                    <Components.Divider/>
+                    <Components.Switch tKey={TranslationKeys.SETTING_ESP_SOUND_NOTIFICATIONS} sKey="espSettings" field="esp_notificaiton"/>
+                    <Components.Divider/>
+                    <Components.Slider tKey={TranslationKeys.SETTING_ESP_SOUND_VOLUME} sKey="espSettings" field="esp_volume"/>
+                    <Components.Divider/>
+                    <Components.DropdownMenu
                         tKey={TranslationKeys.SETTING_ESP_SOUND_SOUND_OPTION}
-                        storageKey="espSettings"
+                        sKey="espSettings"
                         field="esp_sound_option"
                         helperKey="sound"
-                        data={sounds}
-                    />
-                    <Components.SettingDivider/>
-                    <Components.SettingSaveButton tKey={TranslationKeys.SETTING_ESP_SAVE_TITLE}/>
-                </Components.PageComponentContainer>
+                        data={sounds}/>
+                    <Components.Divider/>
+                    <Components.Button tKey={TranslationKeys.SETTING_ESP_SAVE_TITLE}/>
+                </Components.ComponentContainer>
             </View>  
         </ScrollView>
     );

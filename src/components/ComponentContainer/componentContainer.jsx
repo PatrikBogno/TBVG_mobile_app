@@ -1,7 +1,7 @@
 import { View } from "react-native"
-import style from "../styles/page_component.js";
+import style from "../../styles/page_component.js";
 
-function PageComponentContainer({ children }) {
+function ComponentContainer({ children }) {
     return (
         <View style={style.container}>
             { children }
@@ -9,4 +9,4 @@ function PageComponentContainer({ children }) {
     );
 }
 
-export default PageComponentContainer;
+export default ComponentContainer;

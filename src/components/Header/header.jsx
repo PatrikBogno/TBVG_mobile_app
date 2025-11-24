@@ -1,5 +1,5 @@
 import { View, Text } from "react-native"
-import style from "../styles/header_style.js";
+import style from "../../styles/header_style.js";
 
 function Header() {
     return (

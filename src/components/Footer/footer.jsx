@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Pressable } from "react-native"
-import { Icons } from "../assets/icons/icons.tsx"
-import style from "../styles/footer_style.js";
+import { Icons } from "../../assets/icons/icons.tsx"
+import style from "../../styles/footer_style.js";
 
 function Footer({ navigation, current_route }) {
     const isActive = (screen) => current_route === screen;

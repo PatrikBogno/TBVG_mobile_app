@@ -14,12 +14,13 @@ import {
   ListRenderItem,
 } from 'react-native';
 import { Portal } from 'react-native-portalize';
-import global_style from '../styles/global_style';
-import AppText from './custom_text';
-import { TranslationKeys } from '../translations/translation_keys';
+import global_style from '../../styles/global_style';
+import LowLevelComponents from '../lowLevelComponents';
+import { TranslationKeys } from '../../translations/translation_keys';
+import { AssetKeys } from '../../assets/assetKeys';
 
 // Restore the asset from your original code
-const ic_down = require('../assets/images/down.png');
+const ic_down = AssetKeys.IMAGE_DOWN;
 
 interface SelectCountryProps {
   data: any[];
@@ -44,7 +45,7 @@ interface SelectCountryProps {
   iconColor?: string; // To tint the down arrow
 }
 
-const SelectLanguage = ({
+const Language = ({
   data = [],
   value,
   onChange,
@@ -174,7 +175,7 @@ const SelectLanguage = ({
                 onPress={() => setVisible(false)}
                 style={styles.closeButton}
               >
-                <AppText tKey={TranslationKeys.SETTING_APP_LANGUAGE_CLOSE} tOptions={undefined} custom_style={undefined} children={undefined}/>
+                <LowLevelComponents.Text tKey={TranslationKeys.SETTING_APP_LANGUAGE_CLOSE} tOptions={undefined} custom_style={undefined} children={undefined}/>
               </TouchableOpacity>
             </View>
           </TouchableOpacity>
@@ -223,6 +224,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 999,
+    backgroundColor: 'rgba(0,0,0,0.2)',
   },
   modalBox: {
     width: '85%',
@@ -274,4 +276,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SelectLanguage;
+export default Language;

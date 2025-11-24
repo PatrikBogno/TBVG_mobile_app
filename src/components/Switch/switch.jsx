@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { View, Switch } from "react-native";
-import global_style from '../styles/global_style.js';
-import style from "../styles/setting_switch.js";
-import AppText from './custom_text.jsx';
-import StorageService from "../helpers/storage_service.js";
+import global_style from '../../styles/global_style.js';
+import style from "../../styles/setting_switch.js";
+import LowLevelComponents from "../lowLevelComponents.js";
+import StorageService from "../../helpers/storage_service.js";
 
-function SettingSwitch({ tKey, storageKey, field }) {
+function customSwitch({ tKey, sKey, field }) {
     const [isEnabled, setIsEnabled] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const loadSetting = async () => {
-            const stored = await StorageService.getItem(storageKey);
+            const stored = await StorageService.getItem(sKey);
 
             let storedValue = null;
 
@@ -29,7 +29,7 @@ function SettingSwitch({ tKey, storageKey, field }) {
         };
 
         loadSetting();
-    }, [storageKey, field]);
+    }, [sKey, field]);
 
     const toggleSwitch = async () => {
         const newValue = !isEnabled;
@@ -37,10 +37,10 @@ function SettingSwitch({ tKey, storageKey, field }) {
 
         if (field) {
             // Update only the specific field inside object
-            await StorageService.updateItem(storageKey, { [field]: newValue });
+            await StorageService.updateItem(sKey, { [field]: newValue });
         } else {
             // Save raw boolean
-            await StorageService.setItem(storageKey, newValue);
+            await StorageService.setItem(sKey, newValue);
         }
     };
 
@@ -49,7 +49,7 @@ function SettingSwitch({ tKey, storageKey, field }) {
     return (
         <View style={style.container}>
             <View style={style.setting_name}>
-                <AppText tKey={tKey} style={style.setting_name_style} />
+                <LowLevelComponents.Text tKey={tKey} style={style.setting_name_style} />
             </View>
 
             <View style={style.switch_container}>
@@ -71,4 +71,4 @@ function SettingSwitch({ tKey, storageKey, field }) {
     );
 }
 
-export default SettingSwitch;
+export default customSwitch;

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { useTranslation } from 'react-i18next'; 
-import style from '../styles/custom_text.js';
+import StyleKeys from '../../styles/styleKeys.js';
 
-const AppText = ({ tKey, tOptions, custom_style, children }) => {
+const customText = ({ tKey, tOptions, custom_style, children }) => {
+  const style = StyleKeys.styleText;
   const { t } = useTranslation(); 
 
   const content = tKey ? t(tKey, tOptions) : children;
@@ -15,4 +16,4 @@ const AppText = ({ tKey, tOptions, custom_style, children }) => {
   );
 };
 
-export default AppText;
+export default customText;

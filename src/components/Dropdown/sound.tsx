@@ -8,11 +8,11 @@ import {
   Image,
 } from 'react-native';
 import { Portal } from 'react-native-portalize';
-import global_style from '../styles/global_style';
+import global_style from '../../styles/global_style';
+import { AssetKeys } from '../../assets/assetKeys';
 
-const ic_down = require('../assets/images/down.png');
-// Placeholder for the play button icon
-const ic_play = require('../assets/images/play.png'); 
+const ic_down = AssetKeys.IMAGE_DOWN;
+const ic_play = AssetKeys.IMAGE_PLAY; 
 
 interface SelectDropdownProps {
   data: any[];
@@ -32,7 +32,7 @@ interface SelectDropdownProps {
   iconColor?: string;
 }
 
-const DropdownSound = ({
+const Sound = ({
   data = [],
   value,
   onChange,
@@ -75,7 +75,6 @@ const DropdownSound = ({
       <TouchableOpacity 
         style={styles.playButton}
         onPress={() => {
-            // Logic for playing sound would go here
             console.log(`Playing preview for: ${item[labelField]}`);
         }}
       >
@@ -147,16 +146,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 12,
     justifyContent: 'space-between',
-    // Optional: Add border to dropdown trigger if needed to match design
-    // borderWidth: 1,
-    // borderColor: global_style.colors.borders,
-    // borderRadius: 8,
   },
 
   text: {
     fontSize: 14,
     color: global_style.colors.text,
-    flex: 1, // Ensure text takes available space
+    flex: 1, 
   },
 
   placeholderText: {
@@ -221,4 +216,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DropdownSound;
+export default Sound;

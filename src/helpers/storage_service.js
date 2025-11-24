@@ -68,32 +68,6 @@ class StorageService {
       console.error("Error reading AsyncStorage:", error);
     }
   }
-
-  static async  setEspBrightnessToZero() {
-  try {
-    // Get current espSettings data
-    const data = await AsyncStorage.getItem("espSettings");
-
-    if (!data) {
-      console.log("espSettings not found in AsyncStorage.");
-      return;
-    }
-
-    // Parse JSON
-    const settings = JSON.parse(data);
-
-    // Update brightness
-    settings.esp_volume = 0;
-
-    // Save updated object
-    await AsyncStorage.setItem("espSettings", JSON.stringify(settings));
-
-    console.log("esp_brightness successfully updated to 0.");
-  } catch (error) {
-    console.error("Error updating esp_brightness:", error);
-  }
-}
-
 }
 
 export default StorageService;

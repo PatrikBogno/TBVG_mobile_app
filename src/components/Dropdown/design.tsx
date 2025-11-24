@@ -8,9 +8,10 @@ import {
   Image,
 } from 'react-native';
 import { Portal } from 'react-native-portalize';
-import global_style from '../styles/global_style';
+import { AssetKeys } from '../../assets/assetKeys';
+import global_style from '../../styles/global_style';
 
-const ic_down = require('../assets/images/down.png');
+const ic_down = AssetKeys.IMAGE_DOWN;
 
 interface SelectDropdownProps {
   data: any[];
@@ -29,7 +30,7 @@ interface SelectDropdownProps {
   iconColor?: string;
 }
 
-const DropdownDesign = ({
+const Design = ({
   data = [],
   value,
   onChange,
@@ -159,6 +160,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 1000,
+    backgroundColor: 'rgba(0,0,0,0.2)',
   },
 
   modalBox: {
@@ -191,4 +193,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default DropdownDesign;
+export default Design;

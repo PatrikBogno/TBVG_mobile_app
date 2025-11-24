@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { View } from "react-native";
 import Slider from '@react-native-community/slider';
-import style from "../styles/setting_slider.js";
-import AppText from "./custom_text.jsx";
-import StorageService from "../helpers/storage_service.js";
+import LowLevelComponents from '../lowLevelComponents.js';
+import style from "../../styles/setting_slider.js";
+import StorageService from "../../helpers/storage_service.js";
 
-function SettingSlider({ tKey, storageKey, field }) {
+function customSlider({ tKey, sKey, field }) {
     const [sliderValue, setSliderValue] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const loadSetting = async () => {
-            const stored = await StorageService.getItem(storageKey);
+            const stored = await StorageService.getItem(sKey);
 
             let storedValue = null;
 
@@ -29,15 +29,15 @@ function SettingSlider({ tKey, storageKey, field }) {
         };
 
         loadSetting();
-    }, [storageKey, field]);
+    }, [sKey, field]);
 
     const changeStorage = async (value) => {
         const newValue = value;
 
         if (field) {
-            await StorageService.updateItem(storageKey, { [field]: newValue });
+            await StorageService.updateItem(sKey, { [field]: newValue });
         } else {
-            await StorageService.setItem(storageKey, newValue);
+            await StorageService.setItem(sKey, newValue);
         }
     };
 
@@ -46,7 +46,7 @@ function SettingSlider({ tKey, storageKey, field }) {
     return (
         <View style={style.container}>
             <View style={style.setting_name}>
-                <AppText tKey={tKey} custom_style={style.setting_name_text}/>
+                <LowLevelComponents.Text tKey={tKey} custom_style={style.setting_name_text}/>
             </View>
             <View style={style.slider_container}>
                 <Slider
@@ -67,4 +67,4 @@ function SettingSlider({ tKey, storageKey, field }) {
     );
 }
 
-export default SettingSlider;
+export default customSlider;

@@ -8,9 +8,9 @@ function WeekView() {
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={style.scroll_container}>
             <View style={style.page_container}>
-                <Components.PageComponentContainer> 
+                <Components.ComponentContainer> 
                     
-                </Components.PageComponentContainer>
+                </Components.ComponentContainer>
             </View>  
         </ScrollView>   
     );
