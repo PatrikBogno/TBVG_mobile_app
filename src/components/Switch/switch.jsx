@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { View, Switch } from "react-native";
-import global_style from '../../styles/global_style.js';
-import style from "../../styles/setting_switch.js";
 import LowLevelComponents from "../lowLevelComponents.js";
-import StorageService from "../../helpers/storage_service.js";
+
+
+import StyleKeys from '../../styles/styleKeys.js';
+import ServiceKeys from '../../services/serviceKeys.js';
 
 function customSwitch({ tKey, sKey, field }) {
+    let style = StyleKeys.styleSwitch;
+    let storage = ServiceKeys.serviceStorage;
+
     const [isEnabled, setIsEnabled] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const loadSetting = async () => {
-            const stored = await StorageService.getItem(sKey);
+            const stored = await storage.getItem(sKey);
 
             let storedValue = null;
 
@@ -36,11 +40,9 @@ function customSwitch({ tKey, sKey, field }) {
         setIsEnabled(newValue);
 
         if (field) {
-            // Update only the specific field inside object
-            await StorageService.updateItem(sKey, { [field]: newValue });
+            await storage.updateItem(sKey, { [field]: newValue });
         } else {
-            // Save raw boolean
-            await StorageService.setItem(sKey, newValue);
+            await storage.setItem(sKey, newValue);
         }
     };
 
@@ -48,24 +50,24 @@ function customSwitch({ tKey, sKey, field }) {
 
     return (
         <View style={style.container}>
-            <View style={style.setting_name}>
-                <LowLevelComponents.Text tKey={tKey} style={style.setting_name_style} />
+            <View style={style.containerTitle}>
+                <LowLevelComponents.Text 
+                    tKey={tKey}/>
             </View>
 
-            <View style={style.switch_container}>
+            <View style={style.containerSwitch}>
                 <Switch
                     trackColor={{
-                        false: global_style.colors.details_light,
-                        true: global_style.colors.details_dark
+                        false: style.switch.trackColorFalse,
+                        true: style.switch.trackColorTrue
                     }}
                     thumbColor={
                         isEnabled
-                            ? global_style.colors.details_light
-                            : global_style.colors.details_dark
+                            ? style.switch.thumbColorTrue
+                            : style.switch.thumbColorFalse
                     }
                     onValueChange={toggleSwitch}
-                    value={isEnabled}
-                />
+                    value={isEnabled}/>
             </View>
         </View>
     );

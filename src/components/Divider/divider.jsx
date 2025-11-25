@@ -1,7 +1,9 @@
 import { View } from "react-native";
-import style from "../../styles/setting_divider.js";
+import StyleKeys from "../../styles/styleKeys";
 
 function Divider() {
+    let style = StyleKeys.styleDivider;
+
     return (
         <View style={style.container}/>  
     );

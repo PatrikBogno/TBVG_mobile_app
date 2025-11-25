@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { View } from "react-native";
 import Slider from '@react-native-community/slider';
 import LowLevelComponents from '../lowLevelComponents.js';
-import style from "../../styles/setting_slider.js";
-import StorageService from "../../helpers/storage_service.js";
+
+import StyleKeys from '../../styles/styleKeys.js';
+import ServiceKeys from '../../services/serviceKeys.js';
 
 function customSlider({ tKey, sKey, field }) {
+    let style = StyleKeys.styleSlider;
+    let storage = ServiceKeys.serviceStorage;
+
     const [sliderValue, setSliderValue] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const loadSetting = async () => {
-            const stored = await StorageService.getItem(sKey);
+            const stored = await storage.getItem(sKey);
 
             let storedValue = null;
 
@@ -35,9 +39,9 @@ function customSlider({ tKey, sKey, field }) {
         const newValue = value;
 
         if (field) {
-            await StorageService.updateItem(sKey, { [field]: newValue });
+            await storage.updateItem(sKey, { [field]: newValue });
         } else {
-            await StorageService.setItem(sKey, newValue);
+            await storage.setItem(sKey, newValue);
         }
     };
 
@@ -45,10 +49,11 @@ function customSlider({ tKey, sKey, field }) {
 
     return (
         <View style={style.container}>
-            <View style={style.setting_name}>
-                <LowLevelComponents.Text tKey={tKey} custom_style={style.setting_name_text}/>
+            <View style={style.containerTitle}>
+                <LowLevelComponents.Text 
+                    tKey={tKey}/>
             </View>
-            <View style={style.slider_container}>
+            <View style={style.containerSlider}>
                 <Slider
                 style={style.slider}
                 minimumValue={0}
@@ -60,8 +65,7 @@ function customSlider({ tKey, sKey, field }) {
                 value={sliderValue}
                 onSlidingComplete={value => {
                     changeStorage(value);
-                }}
-            />
+                }}/>
             </View>
         </View>
     );

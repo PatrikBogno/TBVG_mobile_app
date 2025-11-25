@@ -1,11 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
-import StorageService from "../../helpers/storage_service.js";
+import { View } from "react-native";
 import LowLevelComponents from "../lowLevelComponents.js";
-import { DropdownHelpers } from "../../helpers/dropdown_helper.js";
+
+import StyleKeys from "../../styles/styleKeys.js";
+import ServiceKeys from "../../services/serviceKeys.js";
+import i18next from "../../translations/i18n.js";
+
 import Language from "./language.tsx";
 import Design from "./design.tsx";
 import Sound from "./sound.tsx";
+
+const DropdownHelper = {
+  language: async (item) => {
+    console.log("Language changed to: " + item.label);
+    await i18next.changeLanguage(item.value);
+  },
+
+  design: async (item) => {
+    console.log("Style changed to:", item.label);
+    // TODO: apply theme, call context, etc.
+  },
+
+  sound: async (item) => {
+    console.log("Sound mode:", item.label);
+    // TODO: change sound settings, play preview, etc.
+  },
+};
+
 
 /**
  * @typedef {"language" | "design" | "sound"} HelperKey
@@ -27,6 +48,9 @@ function SettingDropdown({
   data = [],
   helperKey,
 }) {
+  let style = StyleKeys.styleDropdown;
+  let storage = ServiceKeys.serviceStorage;
+
   const [selected, setSelected] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -39,7 +63,7 @@ function SettingDropdown({
 
   useEffect(() => {
     const loadSetting = async () => {
-      const stored = await StorageService.getItem(sKey);
+      const stored = await storage.getItem(sKey);
 
       let storedValue = null;
 
@@ -63,36 +87,31 @@ function SettingDropdown({
     setSelected(value);
 
     if (field) {
-      await StorageService.updateItem(sKey, { [field]: value });
+      await storage.updateItem(sKey, { [field]: value });
     } else {
-      await StorageService.setItem(sKey, value);
+      await storage.setItem(sKey, value);
     }
 
-    if (DropdownHelpers[helperKey]) {
-      await DropdownHelpers[helperKey](item);
+    if (DropdownHelper[helperKey]) {
+      await DropdownHelper[helperKey](item);
     }
   };
 
   if (!loaded) return null;
 
   return (
-    <View style={styles.container}>
-      {tKey && <LowLevelComponents.Text tKey={tKey} custom_style={styles.label} />}
+    <View style={style.container}>
+      {tKey && 
+      <LowLevelComponents.Text 
+        tKey={tKey} 
+        cStyle={style.label}/>
+      }
       <DropdownComponent
         value={selected}
         data={data}
-        onChange={handleChange}
-      />
+        onChange={handleChange}/>
     </View>
   );
 }
 
 export default SettingDropdown;
-
-const styles = StyleSheet.create({
-  label: {
-    marginTop: "4%",
-    marginLeft: "5%",
-    fontSize: 16,
-  },
-});

@@ -1,4 +1,4 @@
-import global_style from './global_style';
+import styleGlobal from '../styleGlobal';
 
 var React = require('react-native');
 
@@ -9,13 +9,12 @@ var style = React.StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',   
         borderBottomWidth: 2,
-        borderBottomColor: global_style.colors.borders
+        borderBottomColor: styleGlobal.colors.borders
     },
 
     text: {
-        color: global_style.colors.text,
-        fontSize: global_style.fonts.header_size,
-        fontFamily: global_style.fonts.family,
+        fontSize: styleGlobal.fonts.sizeHeaderSmall,
+        fontFamily: styleGlobal.fonts.familyHeader,
     }
 })
 

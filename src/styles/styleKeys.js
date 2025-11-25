@@ -1,22 +1,48 @@
 import styleButton from "./components/button";
 import styleComponentContainer from "./components/componentContainer";
 import styleDivider from "./components/divider";
+import styleDropdown from "./components/dropdown";
 import styleFooter from "./components/footer";
 import styleHeader from "./components/header";
 import styleSlider from "./components/slider";
 import styleSwitch from "./components/switch";
 import styleText from "./components/text";
 
+import styleGlobalLayout from "./layouts/globalLayout";
+
+import styleDayPage from "./pages/editDayPage";
+import styleTaskPage from "./pages/editTaskPage";
+import styleMainPage from "./pages/mainPage";
+import styleSettingsPage from "./pages/settingsPage";
+import styleWeekViewPage from "./pages/weekViewPage";
+
+import styleGlobal from "./styleGlobal";
+
 
 const StyleKeys = {
+    //Components
     styleButton,
     styleComponentContainer,
     styleDivider,
+    styleDropdown,
     styleFooter,
     styleHeader,
     styleSlider,
     styleSwitch,
-    styleText
+    styleText,
+
+    //Layouts
+    styleGlobalLayout,
+
+    //Pages
+    styleDayPage,
+    styleTaskPage,
+    styleMainPage,
+    styleSettingsPage,
+    styleWeekViewPage,
+
+    //Global
+    styleGlobal
 }
 
 export default StyleKeys;

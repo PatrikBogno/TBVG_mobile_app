@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import {
   View,
   TouchableOpacity,
-  Text,
   Image,
   TextInput,
   FlatList,
@@ -14,12 +13,12 @@ import {
   ListRenderItem,
 } from 'react-native';
 import { Portal } from 'react-native-portalize';
-import global_style from '../../styles/global_style';
 import LowLevelComponents from '../lowLevelComponents';
-import { TranslationKeys } from '../../translations/translation_keys';
+import { TranslationKeys } from '../../translations/translationKeys';
 import { AssetKeys } from '../../assets/assetKeys';
+import StyleKeys from '../../styles/styleKeys';
 
-// Restore the asset from your original code
+const global_style = StyleKeys.styleGlobal;
 const ic_down = AssetKeys.IMAGE_DOWN;
 
 interface SelectCountryProps {
@@ -95,9 +94,12 @@ const Language = ({
             resizeMode="contain"
           />
         ) : null}
-        <Text style={StyleSheet.flatten([styles.text, selectedTextStyle])}>
+        <LowLevelComponents.Text 
+          tKey={null}
+          tOptions={null}
+          cStyle={StyleSheet.flatten([styles.text, selectedTextStyle])}>
           {item[labelField]}
-        </Text>
+        </LowLevelComponents.Text>
       </TouchableOpacity>
     );
   };
@@ -113,17 +115,17 @@ const Language = ({
               resizeMode="contain"
             />
           )}
-          <Text
-            style={[
+          <LowLevelComponents.Text
+            tKey={null}
+            tOptions={null}
+            cStyle={[
               styles.text,
               !selectedItem && styles.placeholderText,
               !selectedItem && placeholderStyle,
               selectedItem && selectedTextStyle,
-            ]}
-            numberOfLines={1}
-          >
+            ]}>
             {selectedItem ? selectedItem[labelField] : placeholder}
-          </Text>
+          </LowLevelComponents.Text>
         </View>
 
         <TouchableOpacity 
@@ -167,7 +169,12 @@ const Language = ({
                 initialNumToRender={15}
                 keyboardShouldPersistTaps="handled"
                 ListEmptyComponent={
-                  <Text style={styles.emptyText}>No country found</Text>
+                  <LowLevelComponents.Text 
+                    tKey={null}
+                    tOptions={null}  
+                    cStyle={styles.emptyText}>
+                      No country found
+                  </LowLevelComponents.Text>
                 }
               />
 
@@ -175,7 +182,7 @@ const Language = ({
                 onPress={() => setVisible(false)}
                 style={styles.closeButton}
               >
-                <LowLevelComponents.Text tKey={TranslationKeys.SETTING_APP_LANGUAGE_CLOSE} tOptions={undefined} custom_style={undefined} children={undefined}/>
+                <LowLevelComponents.Text tKey={TranslationKeys.SETTING_APP_LANGUAGE_CLOSE} tOptions={undefined} cStyle={undefined} children={undefined}/>
               </TouchableOpacity>
             </View>
           </TouchableOpacity>
@@ -209,11 +216,10 @@ const styles = StyleSheet.create({
     height: 25,
   },
   text: {
-    fontSize: 14,
-    color: global_style.colors.text,
+    fontSize: 16,
   },
   placeholderText: {
-    color: global_style.colors.text,
+    opacity: 0.5
   },
   overlay: {
     position: 'absolute',
@@ -229,10 +235,10 @@ const styles = StyleSheet.create({
   modalBox: {
     width: '85%',
     maxHeight: '60%',
-    backgroundColor: global_style.colors.secondary_light,
+    backgroundColor: global_style.colors.secondaryLight,
     padding: 10,
     borderRadius: 12,
-    shadowColor: global_style.colors.details_dark,
+    shadowColor: global_style.colors.detailsDark,
     shadowRadius: 5,
     elevation: 5,
     borderWidth: 1,
@@ -246,7 +252,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     height: 45,
     fontSize: 16,
-    color: global_style.colors.text,
   },
   listContainer: {
     maxHeight: 250,
@@ -270,7 +275,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   closeText: {
-    color: global_style.colors.text,
     fontSize: 16,
     fontWeight: '600',
   },

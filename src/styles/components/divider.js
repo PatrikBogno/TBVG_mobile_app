@@ -1,4 +1,4 @@
-import global_style from './global_style';
+import styleGlobal from '../styleGlobal';
 
 var React = require('react-native');
 
@@ -6,7 +6,7 @@ var style = React.StyleSheet.create({
     container: {
         height: 2,
         width: '95%',
-        backgroundColor: global_style.colors.borders,
+        backgroundColor: styleGlobal.colors.borders,
         marginVertical: 2,
     },
 })

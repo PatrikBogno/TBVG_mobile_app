@@ -1,12 +1,15 @@
 import { TouchableOpacity} from "react-native";
-import StorageService from "../../helpers/storage_service.js";
-import style from "../../styles/setting_save_button.js";
+
 import LowLevelComponents from "../lowLevelComponents.js";
+import StyleKeys from "../../styles/styleKeys.js";
+import ServiceKeys from "../../services/serviceKeys.js";
 
 function customButton({ tKey }) {
+    let style = StyleKeys.styleButton;
+    let storage = ServiceKeys.serviceStorage;
 
     const sendData = async () => {
-        const settings = await StorageService.getItem("espSettings");
+        const settings = await storage.getItem("espSettings");
         //TODO: send data to esp here
 
         console.log(settings);
@@ -14,7 +17,8 @@ function customButton({ tKey }) {
 
     return (
         <TouchableOpacity style={style.container} onPress={sendData}>
-            <LowLevelComponents.Text tKey={tKey} custom_style={style.text}/>
+            <LowLevelComponents.Text 
+                tKey={tKey}/>
         </TouchableOpacity>
     );
 }

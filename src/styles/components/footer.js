@@ -1,5 +1,5 @@
 import jsxRuntime from 'react/jsx-runtime';
-import global_style from './global_style';
+import styleGlobal from '../styleGlobal';
 
 var React = require('react-native');
 
@@ -12,24 +12,24 @@ var style = React.StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderTopWidth: 2,
-        borderTopColor: global_style.colors.borders
+        borderTopColor: styleGlobal.colors.borders
     },
 
-    icon_menu_container: {
+    containerIconMenu: {
         width: '90%',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
     },  
 
-    icon_button_container: {
+    containerIconButton: {
         flex: 1,
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
-    icon_container: {
+    conainerIcon: {
         height: 50,
         width: 50,
         justifyContent: 'center',
@@ -42,11 +42,11 @@ var style = React.StyleSheet.create({
         strokeWidth: 1.5,
     },  
 
-    active_page_icon: {
+    iconActive: {
         borderWidth: 2,
-        borderColor: global_style.colors.borders,
+        borderColor: styleGlobal.colors.borders,
         borderRadius: 20,
-        backgroundColor: global_style.colors.secondary_light
+        backgroundColor: styleGlobal.colors.secondaryLight
     },  
 })
 

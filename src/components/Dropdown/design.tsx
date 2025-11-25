@@ -2,15 +2,16 @@ import React, { useState, useMemo } from 'react';
 import {
   View,
   TouchableOpacity,
-  Text,
   FlatList,
   StyleSheet,
   Image,
 } from 'react-native';
 import { Portal } from 'react-native-portalize';
 import { AssetKeys } from '../../assets/assetKeys';
-import global_style from '../../styles/global_style';
+import StyleKeys from '../../styles/styleKeys';
+import LowLevelComponents from '../lowLevelComponents';
 
+const global_style = StyleKeys.styleGlobal;
 const ic_down = AssetKeys.IMAGE_DOWN;
 
 interface SelectDropdownProps {
@@ -61,9 +62,12 @@ const Design = ({
       setVisible(false);
     }}
   >
-    <Text style={[styles.text, selectedTextStyle]}>
+    <LowLevelComponents.Text 
+      tKey={null}
+      tOptions={null}
+      cStyle={[styles.text, selectedTextStyle]}>
       {item[labelField]}
-    </Text>
+    </LowLevelComponents.Text>
 
     {item.design && (
       <View
@@ -80,16 +84,16 @@ const Design = ({
     <>
       {/* DROPDOWN BUTTON */}
       <View style={[styles.dropdown, style]}>
-        <Text
-          style={[
+        <LowLevelComponents.Text
+          tKey={null}
+          tOptions={null}
+          cStyle={[
             styles.text,
             selectedItem ? selectedTextStyle : placeholderStyle,
             !selectedItem && styles.placeholderText,
-          ]}
-          numberOfLines={1}
-        >
+          ]}>
           {selectedItem ? selectedItem[labelField] : placeholder}
-        </Text>
+        </LowLevelComponents.Text>
 
         <TouchableOpacity onPress={() => setVisible(true)}>
           <Image
@@ -139,7 +143,6 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 14,
-    color: global_style.colors.text,
   },
 
   placeholderText: {
@@ -166,10 +169,10 @@ const styles = StyleSheet.create({
   modalBox: {
     width: '85%',
     maxHeight: '60%',
-    backgroundColor: global_style.colors.secondary_light,
+    backgroundColor: global_style.colors.secondaryLight,
     padding: 10,
     borderRadius: 12,
-    shadowColor: global_style.colors.details_dark,
+    shadowColor: global_style.colors.detailsDark,
     shadowRadius: 5,
     elevation: 5,
     borderWidth: 1,

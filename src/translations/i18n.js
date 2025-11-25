@@ -1,6 +1,6 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
-import StorageService from "../helpers/storage_service";
+import ServiceKeys from "../services/serviceKeys";
 
 // Import translations
 import en from "./en.json";
@@ -13,8 +13,9 @@ const availableLanguages = {
 };
 
 export async function initializeI18n() {
+  let storage = ServiceKeys.serviceStorage;
   // Load saved settings
-  const savedSettings = await StorageService.getItem("appSettings");
+  const savedSettings = await storage.getItem("appSettings");
   const savedLanguage = savedSettings?.language || "en";  // fallback
 
   await i18next

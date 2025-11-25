@@ -1,4 +1,4 @@
-import global_style from './global_style';
+import styleGlobal from '../styleGlobal';
 
 var React = require('react-native');
 
@@ -11,21 +11,20 @@ var style = React.StyleSheet.create({
         justifyContent: 'center',
     },
 
-    setting_name: {
+    containerTitle: {
         flex: 2,
-        color: global_style.colors.menu_text,
-        fontFamily: global_style.fonts.family_text,
     },
 
-    setting_name_text: {
-        fontSize: global_style.fonts.regurlar_size,
-        fontFamily: global_style.fonts.family_text,
-        color: global_style.colors.menu_text,
-    },
-
-    switch_container: {
+    containerSwitch: {
         flex: 1,
     },
+
+    switch: {
+        trackColorFalse: styleGlobal.colors.detailsLight,
+        trackColorTrue: styleGlobal.colors.detailsDark,
+        thumbColorFalse: styleGlobal.colors.detailsDark,
+        thumbColorTrue: styleGlobal.colors.detailsLight
+    }
 })
 
 module.exports = style;

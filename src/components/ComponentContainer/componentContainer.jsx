@@ -1,7 +1,9 @@
 import { View } from "react-native"
-import style from "../../styles/page_component.js";
+import StyleKeys from "../../styles/styleKeys";
 
 function ComponentContainer({ children }) {
+    let style = StyleKeys.styleComponentContainer;
+    
     return (
         <View style={style.container}>
             { children }

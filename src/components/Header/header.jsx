@@ -1,7 +1,9 @@
 import { View, Text } from "react-native"
-import style from "../../styles/header_style.js";
+import StyleKeys from "../../styles/styleKeys";
 
 function Header() {
+    let style = StyleKeys.styleHeader;
+    
     return (
         <View style={style.container}>
             <Text style={style.text}>The Bedside Visual Guide</Text>

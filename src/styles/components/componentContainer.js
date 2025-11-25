@@ -1,4 +1,4 @@
-import global_style from '../styles/global_style.js';
+import styleGlobal from '../styleGlobal.js';
 
 var React = require('react-native');
 
@@ -8,11 +8,11 @@ var style = React.StyleSheet.create({
         width: '92%',
         marginTop: '4%',
         borderRadius: 10,
-        backgroundColor: global_style.colors.primary,
+        backgroundColor: styleGlobal.colors.primary,
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 10,
-        shadowColor: global_style.colors.details_dark,
+        shadowColor: styleGlobal.colors.detailsDark,
         shadowRadius: 5,
     },
     
