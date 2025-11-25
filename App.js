@@ -9,13 +9,11 @@ import * as SystemUI from "expo-system-ui";
 import * as SplashScreen from "expo-splash-screen";
 import * as NavigationBar from "expo-navigation-bar"; 
 
-import GlobalLayout from "./src/layouts/global_layout.jsx";
-import { Pages } from "./src/pages/pages.js";
-import useLoadFonts from "./src/hooks/load_font";
-import global_style from "./src/styles/global_style.js";
+import GlobalLayout from "./src/layouts/layoutGlobal";
+import PageKeys from "./src/pages/pageKeys.js";
 import { Host } from "react-native-portalize";
-import StorageService from "./src/helpers/storage_service.js";
 import { initializeI18n } from "./src/translations/i18n.js";
+import { useLoadFonts } from "./src/hooks/hookKeys"
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -23,11 +21,11 @@ const Tab = createMaterialTopTabNavigator();
 function MainTabFlow() {
   return (
     <Tab.Navigator tabBar={() => null} screenOptions={{ headerShown: false }} initialRouteName="Main">
-      <Tab.Screen name="Main" component={Pages.Main} />
-      <Tab.Screen name="WeekView" component={Pages.WeekView} />
-      <Tab.Screen name="EditDay" component={Pages.EditDay} />
-      <Tab.Screen name="EditTask" component={Pages.EditTask} />
-      <Tab.Screen name="Settings" component={Pages.Settings} />
+      <Tab.Screen name="Main" component={PageKeys.Main} />
+      <Tab.Screen name="WeekView" component={PageKeys.WeekView} />
+      <Tab.Screen name="EditDay" component={PageKeys.EditDay} />
+      <Tab.Screen name="EditTask" component={PageKeys.EditTask} />
+      <Tab.Screen name="Settings" component={PageKeys.Settings} />
     </Tab.Navigator>
   );
 }
@@ -46,7 +44,7 @@ export default function App() {
   const fontsLoaded = useLoadFonts();
   const navigationRef = useNavigationContainerRef();
   const [loaded, setLoaded] = useState(false);
-  const [currentRoute, setCurrentRoute] = useState("Main");
+  const [route, setCurrentRoute] = useState("Main");
 
   useEffect(() => {
     SplashScreen.preventAutoHideAsync();
@@ -88,7 +86,7 @@ export default function App() {
             if (current) setCurrentRoute(current);
           }}
         >
-          <GlobalLayout current_route={currentRoute}>
+          <GlobalLayout route={route}>
             <RootStack />
           </GlobalLayout>
         </NavigationContainer>
