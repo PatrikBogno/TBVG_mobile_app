@@ -2,9 +2,7 @@ import React, { useState, useMemo } from 'react';
 import {
   View,
   TouchableOpacity,
-  Text,
   FlatList,
-  StyleSheet,
   Image,
 } from 'react-native';
 import { Portal } from 'react-native-portalize';
@@ -12,7 +10,7 @@ import { AssetKeys } from '../../assets/assetKeys';
 import LowLevelComponents from '../lowLevelComponents';
 import StyleKeys from '../../styles/styleKeys';
 
-const global_style = StyleKeys.styleGlobal;
+const style = StyleKeys.styleDropdownSound;
 const ic_down = AssetKeys.IMAGE_DOWN;
 const ic_play = AssetKeys.IMAGE_PLAY; 
 
@@ -25,9 +23,8 @@ interface SelectDropdownProps {
 
   valueField?: string;
   labelField?: string;
-  soundField?: string; // Added specific field for sound
+  // soundField?: string; 
 
-  style?: any;
   selectedTextStyle?: any;
   placeholderStyle?: any;
   iconStyle?: any;
@@ -43,14 +40,13 @@ const Sound = ({
 
   valueField = 'value',
   labelField = 'label',
-  // soundField = 'sound', // Use this if you need to access the specific sound property key
+  // soundField = 'sound', 
 
-  style,
   selectedTextStyle,
   placeholderStyle,
 
   iconStyle,
-  iconColor = global_style.colors.text,
+  iconColor,
 }: SelectDropdownProps) => {
   const [visible, setVisible] = useState(false);
 
@@ -58,11 +54,14 @@ const Sound = ({
     return data.find((item) => item[valueField] === value);
   }, [data, value]);
 
-  const renderItem = ({ item }: { item: any }) => (
-    <View style={styles.itemContainer}>
+  const renderItem = ({ item, index }: { item: any, index: number }) => {
+    const isLast = index === data.length - 1;
+    console.log(isLast);
+    return (
+    <View style={[style.itemContainer, isLast && {borderBottomWidth: 0}]}>
       {/* 1. Selection Area (Text) */}
       <TouchableOpacity
-        style={styles.itemTextContainer}
+        style={style.itemTextContainer}
         onPress={() => {
           onChange(item);
           setVisible(false);
@@ -71,38 +70,37 @@ const Sound = ({
         <LowLevelComponents.Text 
           tKey={null}
           tOptions={null}
-          cStyle={[styles.text, selectedTextStyle]}>
+          cStyle={style.text}>
           {item[labelField]}
         </LowLevelComponents.Text>
       </TouchableOpacity>
 
       {/* 2. Play Button Area (Does not select, just plays) */}
       <TouchableOpacity 
-        style={styles.playButton}
+        style={style.playButton}
         onPress={() => {
             console.log(`Playing preview for: ${item[labelField]}`);
         }}
       >
         <Image 
             source={ic_play} 
-            style={[styles.playIcon, { tintColor: iconColor }]} 
+            style={style.playIcon} 
             resizeMode="contain"
         />
       </TouchableOpacity>
     </View>
-  );
+  )};
 
   return (
     <>
       {/* DROPDOWN BUTTON */}
-      <View style={[styles.dropdown, style]}>
+      <View style={[style.dropdown, style]}>
         <LowLevelComponents.Text
           tKey={null}
           tOptions={null}
           cStyle={[
-            styles.text,
-            selectedItem ? selectedTextStyle : placeholderStyle,
-            !selectedItem && styles.placeholderText,
+            style.text,
+            !selectedItem && style.placeholderText,
           ]}
         >
           {selectedItem ? selectedItem[labelField] : placeholder}
@@ -112,7 +110,7 @@ const Sound = ({
           <Image
             source={ic_down}
             style={[
-              styles.icon,
+              style.icon,
               { tintColor: iconColor },
               iconStyle,
             ]}
@@ -124,11 +122,11 @@ const Sound = ({
       <Portal>
         {visible && (
           <TouchableOpacity
-            style={styles.overlay}
+            style={style.overlay}
             activeOpacity={1}
             onPress={() => setVisible(false)}
           >
-            <View style={styles.modalBox} onStartShouldSetResponder={() => true}>
+            <View style={style.modalBox} onStartShouldSetResponder={() => true}>
               <FlatList
                 data={data}
                 keyExtractor={(item, index) =>
@@ -143,82 +141,5 @@ const Sound = ({
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  dropdown: {
-    height: 50,
-    width: '90%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 12,
-    justifyContent: 'space-between',
-  },
-
-  text: {
-    fontSize: 14,
-    flex: 1, 
-  },
-
-  placeholderText: {
-    opacity: 0.5,
-  },
-
-  icon: {
-    width: 25,
-    height: 25,
-  },
-
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1000,
-    backgroundColor: 'rgba(0,0,0,0.2)', // Optional dimming
-  },
-
-  modalBox: {
-    width: '85%',
-    maxHeight: '60%',
-    backgroundColor: global_style.colors.secondaryLight,
-    padding: 10,
-    borderRadius: 12,
-    shadowColor: global_style.colors.detailsDark,
-    shadowRadius: 5,
-    elevation: 5,
-    borderWidth: 1,
-    borderColor: global_style.colors.borders,
-  },
-
-  // --- NEW STYLES FOR SOUND ROW ---
-  itemContainer: {
-    flexDirection: 'row', // Arrange items horizontally
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 12,
-    paddingHorizontal: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: global_style.colors.borders,
-  },
-
-  itemTextContainer: {
-    flex: 1, // Takes up all remaining space
-    justifyContent: 'center',
-    paddingRight: 10, // Spacing between text and play button
-  },
-
-  playButton: {
-    padding: 5, // Hit slop for easier clicking
-  },
-
-  playIcon: {
-    width: 24,
-    height: 24,
-    opacity: 0.8,
-  }
-});
 
 export default Sound;

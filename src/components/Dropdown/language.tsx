@@ -18,7 +18,7 @@ import { TranslationKeys } from '../../translations/translationKeys';
 import { AssetKeys } from '../../assets/assetKeys';
 import StyleKeys from '../../styles/styleKeys';
 
-const global_style = StyleKeys.styleGlobal;
+const style = StyleKeys.styleDropdownLanguage;
 const ic_down = AssetKeys.IMAGE_DOWN;
 
 interface SelectCountryProps {
@@ -34,7 +34,6 @@ interface SelectCountryProps {
   imageField?: string;
 
   // Styling overrides
-  style?: StyleProp<ViewStyle>;
   containerStyle?: StyleProp<ViewStyle>;
   selectedTextStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
@@ -53,7 +52,6 @@ const Language = ({
   valueField = 'value',
   labelField = 'label',
   imageField = 'image',
-  style,
   selectedTextStyle,
   imageStyle,
   iconStyle,
@@ -80,7 +78,7 @@ const Language = ({
   const renderItem: ListRenderItem<any> = ({ item }) => {
     return (
       <TouchableOpacity
-        style={styles.item}
+        style={style.item}
         onPress={() => {
           onChange(item);
           setVisible(false);
@@ -90,14 +88,14 @@ const Language = ({
         {item[imageField] ? (
           <Image
             source={item[imageField]}
-            style={StyleSheet.flatten([styles.image, imageStyle])}
+            style={StyleSheet.flatten([style.image, imageStyle])}
             resizeMode="contain"
           />
         ) : null}
         <LowLevelComponents.Text 
           tKey={null}
           tOptions={null}
-          cStyle={StyleSheet.flatten([styles.text, selectedTextStyle])}>
+          cStyle={StyleSheet.flatten([style.text, selectedTextStyle])}>
           {item[labelField]}
         </LowLevelComponents.Text>
       </TouchableOpacity>
@@ -106,12 +104,12 @@ const Language = ({
 
   return (
     <>
-      <View style={[styles.dropdown, style]}>
-        <View style={styles.leftContent}>
+      <View style={[style.dropdown]}>
+        <View style={style.leftContent}>
           {selectedItem && selectedItem[imageField] && (
             <Image
               source={selectedItem[imageField]}
-              style={[styles.image, imageStyle]}
+              style={[style.image, imageStyle]}
               resizeMode="contain"
             />
           )}
@@ -119,8 +117,8 @@ const Language = ({
             tKey={null}
             tOptions={null}
             cStyle={[
-              styles.text,
-              !selectedItem && styles.placeholderText,
+              style.text,
+              !selectedItem && style.placeholderText,
               !selectedItem && placeholderStyle,
               selectedItem && selectedTextStyle,
             ]}>
@@ -135,7 +133,7 @@ const Language = ({
           <Image
             source={ic_down}
             style={StyleSheet.flatten([
-              styles.icon, 
+              style.icon, 
               { tintColor: iconColor }, 
               iconStyle
             ])}
@@ -146,17 +144,17 @@ const Language = ({
       <Portal>
         {visible && (
           <TouchableOpacity
-            style={styles.overlay}
+            style={style.overlay}
             activeOpacity={1}
             onPress={() => setVisible(false)}
           >
-            <View style={styles.modalBox} onStartShouldSetResponder={() => true}>
+            <View style={style.modalBox} onStartShouldSetResponder={() => true}>
               <TextInput
                 value={search}
                 onChangeText={setSearch}
                 placeholder={searchPlaceholder}
                 placeholderTextColor="#999"
-                style={[styles.search, inputSearchStyle]}
+                style={[style.search, inputSearchStyle]}
               />
 
               <FlatList
@@ -165,14 +163,14 @@ const Language = ({
                   item[valueField]?.toString() || index.toString()
                 }
                 renderItem={renderItem}
-                style={styles.listContainer}
+                style={style.listContainer}
                 initialNumToRender={15}
                 keyboardShouldPersistTaps="handled"
                 ListEmptyComponent={
                   <LowLevelComponents.Text 
                     tKey={null}
                     tOptions={null}  
-                    cStyle={styles.emptyText}>
+                    cStyle={style.emptyText}>
                       No country found
                   </LowLevelComponents.Text>
                 }
@@ -180,7 +178,7 @@ const Language = ({
 
               <TouchableOpacity
                 onPress={() => setVisible(false)}
-                style={styles.closeButton}
+                style={style.closeButton}
               >
                 <LowLevelComponents.Text tKey={TranslationKeys.SETTING_APP_LANGUAGE_CLOSE} tOptions={undefined} cStyle={undefined} children={undefined}/>
               </TouchableOpacity>
@@ -191,93 +189,5 @@ const Language = ({
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  dropdown: {
-    height: 50,
-    width: '90%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 12,
-    justifyContent: 'space-between', 
-  },
-  leftContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1, 
-  },
-  image: {
-    width: 28,
-    height: 24,
-    marginRight: 5,
-  },
-  icon: {
-    width: 25,
-    height: 25,
-  },
-  text: {
-    fontSize: 16,
-  },
-  placeholderText: {
-    opacity: 0.5
-  },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 999,
-    backgroundColor: 'rgba(0,0,0,0.2)',
-  },
-  modalBox: {
-    width: '85%',
-    maxHeight: '60%',
-    backgroundColor: global_style.colors.secondaryLight,
-    padding: 10,
-    borderRadius: 12,
-    shadowColor: global_style.colors.detailsDark,
-    shadowRadius: 5,
-    elevation: 5,
-    borderWidth: 1,
-    borderColor: global_style.colors.borders
-  },
-  search: {
-    borderWidth: 2,
-    borderColor: global_style.colors.borders,
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-    height: 45,
-    fontSize: 16,
-  },
-  listContainer: {
-    maxHeight: 250,
-  },
-  item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 5,
-    borderBottomWidth: 2,
-    borderBottomColor: global_style.colors.borders,
-  },
-  emptyText: {
-    textAlign: 'center',
-    paddingVertical: 20,
-    color: '#777',
-  },
-  closeButton: {
-    marginTop: 8,
-    paddingVertical: 8,
-    alignItems: 'center',
-  },
-  closeText: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
-});
 
 export default Language;

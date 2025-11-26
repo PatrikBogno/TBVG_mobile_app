@@ -2,6 +2,9 @@ import styleButton from "./components/button";
 import styleComponentContainer from "./components/componentContainer";
 import styleDivider from "./components/divider";
 import styleDropdown from "./components/dropdown";
+import styleDropdownDesign from "./components/dropdownDesign";
+import styleDropdownLanguage from "./components/dropdownLanguage";
+import styleDropdownSound from "./components/dropdownSound";
 import styleFooter from "./components/footer";
 import styleHeader from "./components/header";
 import styleSlider from "./components/slider";
@@ -25,6 +28,9 @@ const StyleKeys = {
     styleComponentContainer,
     styleDivider,
     styleDropdown,
+    styleDropdownDesign,
+    styleDropdownLanguage,
+    styleDropdownSound,
     styleFooter,
     styleHeader,
     styleSlider,

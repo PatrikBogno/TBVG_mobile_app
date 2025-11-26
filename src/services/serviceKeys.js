@@ -1,4 +1,4 @@
-import serviceStorage from "./serviceStorage";
+import serviceStorage from "./storage";
 
 const ServiceKeys = {
     serviceStorage,
