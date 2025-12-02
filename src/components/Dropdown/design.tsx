@@ -46,31 +46,33 @@ const Design = ({
     return data.find((item) => item[valueField] === value);
   }, [data, value]);
 
-  const renderItem = ({ item }: { item: any }) => (
-  <TouchableOpacity
-    style={style.item}
-    onPress={() => {
-      onChange(item);
-      setVisible(false);
-    }}
-  >
-    <LowLevelComponents.Text 
-      tKey={null}
-      tOptions={null}
-      cStyle={[style.text, style.selectedTextStyle]}>
-      {item[labelField]}
-    </LowLevelComponents.Text>
+  const renderItem = ({ item, index }: { item: any, index: number }) => {
+    const isLast = index === data.length - 1;
+    return (
+      <TouchableOpacity
+        style={[style.item, isLast && {borderBottomWidth: 0}]}
+        onPress={() => {
+          onChange(item);
+          setVisible(false);
+        }}
+      >
+        <LowLevelComponents.Text 
+          tKey={null}
+          tOptions={null}
+          cStyle={[style.text, style.selectedTextStyle]}>
+          {item[labelField]}
+        </LowLevelComponents.Text>
 
-    {item.design && (
-      <View
-        style={[
-          style.colorPreview,
-          { backgroundColor: item.design }
-        ]}
-      />
-    )}
-  </TouchableOpacity>
-);
+        {item.source && (
+          <Image
+            style={[
+              style.colorPreview
+            ]}
+            source={ item.source }
+          />
+        )}
+      </TouchableOpacity>
+    )};
 
   return (
     <>

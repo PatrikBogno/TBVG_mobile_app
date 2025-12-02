@@ -56,7 +56,6 @@ const Sound = ({
 
   const renderItem = ({ item, index }: { item: any, index: number }) => {
     const isLast = index === data.length - 1;
-    console.log(isLast);
     return (
     <View style={[style.itemContainer, isLast && {borderBottomWidth: 0}]}>
       {/* 1. Selection Area (Text) */}

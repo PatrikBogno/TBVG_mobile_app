@@ -1,15 +1,15 @@
 import Main from "./pageMain";
 import Settings from "./pageSettings";
-import WeekView from "./pageWeekView";
-import EditDay from "./pageEditDay";
-import EditTask from "./pageEditTask";
+import Week from "./pageWeek";
+import Day from "./pageDay";
+import Task from "./pageTask";
 
 const pageKeys = {
     Main,
     Settings,
-    WeekView,
-    EditDay,
-    EditTask,
+    Week,
+    Day,
+    Task,
 }
 
 export default pageKeys;

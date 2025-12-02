@@ -4,6 +4,9 @@
     "paragraph_1": "With this app and the ESP box, you can plan a day for your child simply with the help of pictures that show your child what activities will be performed during the day.",
     "paragraph_2": "When choosing images, you have two options to choose from, namely a pre-made image or the option to upload your own image."
   },
+  "task":{
+    "title": "Saved tasks"
+  },
   "settings": {
     "app": {
       "title": "Application settings",

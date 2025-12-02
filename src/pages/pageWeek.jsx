@@ -3,7 +3,7 @@ import Components from "../components/components.js";
 import StyleKeys from "../styles/styleKeys.js";
 
 
-function WeekView() {
+function Week() {
     let style = StyleKeys.styleWeekViewPage;
 
     return (
@@ -17,4 +17,4 @@ function WeekView() {
     );
 }
 
-export default WeekView;
+export default Week;

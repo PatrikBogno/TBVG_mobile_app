@@ -16,18 +16,18 @@ function Footer({ navigation, current_route }) {
                         <Icons.House style={style.icon} />
                     </View>
                 </Pressable>  
-                <Pressable style={style.containerIconButton} onPress={() => navigation.navigate("WeekView")}>
-                    <View style={[style.conainerIcon, isActive("WeekView") && style.iconActive]}>
+                <Pressable style={style.containerIconButton} onPress={() => navigation.navigate("Week")}>
+                    <View style={[style.conainerIcon, isActive("Week") && style.iconActive]}>
                         <Icons.Calendar style={style.icon} />
                     </View>
                 </Pressable>
-                <Pressable style={style.containerIconButton} onPress={() => navigation.navigate("EditDay")}>
-                    <View style={[style.conainerIcon, isActive("EditDay") && style.iconActive]}>
+                <Pressable style={style.containerIconButton} onPress={() => navigation.navigate("Day")}>
+                    <View style={[style.conainerIcon, isActive("Day") && style.iconActive]}>
                         <Icons.EditCalendar style={style.icon} />
                     </View>
                 </Pressable>
-                <Pressable style={style.containerIconButton} onPress={() => navigation.navigate("EditTask")}>
-                    <View style={[style.conainerIcon, isActive("EditTask") && style.iconActive]}>
+                <Pressable style={style.containerIconButton} onPress={() => navigation.navigate("Task")}>
+                    <View style={[style.conainerIcon, isActive("Task") && style.iconActive]}>
                         <Icons.Edit style={style.icon} />
                     </View>
                 </Pressable>

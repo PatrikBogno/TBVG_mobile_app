@@ -2,6 +2,7 @@ import { View, ScrollView } from "react-native";
 import Components from "../components/components.js";
 import { TranslationKeys } from "../translations/translationKeys.ts";
 import StyleKeys from "../styles/styleKeys.js";
+import { AssetKeys } from "../assets/assetKeys.js";
 
 const languages = [
   { value: "sk", label: "Slovenčina", image: { uri: "https://flagsapi.com/SK/flat/64.png" } },
@@ -9,11 +10,10 @@ const languages = [
 ];
 
 const designs = [
-    { value: "blue", label: "Placeholder blue", design: "blue"},
-    { value: "red", label: "Placeholder red", design: "red"},
-    { value: "green", label: "Placeholder green", design: "green"},
-    { value: "yellow", label: "Placeholder yellow", design: "yellow"},
-    { value: "purple", label: "Placeholder purple", design: "purple"},
+    { value: "design1", label: "Background cars", source: AssetKeys.IMAGE_ESP_CARS},
+    { value: "design2", label: "Background dots", source: AssetKeys.IMAGE_ESP_DOTS},
+    { value: "design3", label: "Background flowers", source: AssetKeys.IMAGE_ESP_FLOWERS},
+    { value: "design4", label: "Background stars", source: AssetKeys.IMAGE_ESP_STARS},
 ];
 
 const sounds = [

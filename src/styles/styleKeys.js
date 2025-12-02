@@ -9,6 +9,7 @@ import styleFooter from "./components/footer";
 import styleHeader from "./components/header";
 import styleSlider from "./components/slider";
 import styleSwitch from "./components/switch";
+import styleTaskContainer from "./components/taskContainer";
 import styleText from "./components/text";
 
 import styleGlobalLayout from "./layouts/globalLayout";
@@ -35,6 +36,7 @@ const StyleKeys = {
     styleHeader,
     styleSlider,
     styleSwitch,
+    styleTaskContainer,
     styleText,
 
     //Layouts

@@ -47,7 +47,6 @@ var style = React.StyleSheet.create({
         borderColor: styleGlobal.colors.borders,
     },
 
-    // --- NEW STYLES FOR SOUND ROW ---
     itemContainer: {
         flexDirection: 'row', // Arrange items horizontally
         alignItems: 'center',

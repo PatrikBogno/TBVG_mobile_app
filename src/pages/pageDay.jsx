@@ -2,7 +2,7 @@ import { View, ScrollView } from "react-native";
 import Components from "../components/components.js";
 import StyleKeys from "../styles/styleKeys.js";
 
-function EditDay() {
+function Day() {
     let style = StyleKeys.styleDayPage;
 
     return (
@@ -16,4 +16,4 @@ function EditDay() {
     );
 }
 
-export default EditDay;
+export default Day;

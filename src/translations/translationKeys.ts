@@ -5,6 +5,9 @@ export enum TranslationKeys {
     MAIN_PARAGRAPH_1 = 'main.paragraph_1',
     MAIN_PARAGRAPH_2 = 'main.paragraph_2',
 
+    // Task
+    TASK_TITLE = 'task.title',
+
     // Settings
     SETTING_APP_TITLE = 'settings.app.title',
     SETTING_APP_DARK_MODE = 'settings.app.dark_mode',

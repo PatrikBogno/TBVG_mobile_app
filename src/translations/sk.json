@@ -4,6 +4,9 @@
     "paragraph_1": "Pomocou tejto aplikácie a ESP škatuľky dokážete naplánovať deň pre svoje dieťa a to jednoducho za pomoci obrázkov, ktoré dieťaťu ukážu, aké aktivity sa počas daného dňa budú vykonávať.",
     "paragraph_2": "Pri výbere obrázkov máte na výber z dvoch možností a to predpripravený obrázok alebo možnosť nahrať vlastný obrázok."
   },
+  "task":{
+    "title": "Saved tasks"
+  },
   "settings": {
     "app": {
       "title": "Nastavenia aplikácie",
