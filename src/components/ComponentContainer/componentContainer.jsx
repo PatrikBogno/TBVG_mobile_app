@@ -1,11 +1,11 @@
 import { View } from "react-native"
 import StyleKeys from "../../styles/styleKeys";
 
-function ComponentContainer({ children }) {
+function ComponentContainer({ children, cStyle }) {
     let style = StyleKeys.styleComponentContainer;
     
     return (
-        <View style={style.container}>
+        <View style={[style.container, cStyle]}>
             { children }
         </View>    
     );

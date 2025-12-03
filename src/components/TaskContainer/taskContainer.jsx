@@ -7,13 +7,17 @@ import LowLevelComponents from '../lowLevelComponents';
 
 
 const images = [
-  { id: "1", image: AssetKeys.IMAGE_TASK_DRESSING },
-  { id: "2", image: AssetKeys.IMAGE_TASK_EATING },
-  { id: "3", image: AssetKeys.IMAGE_TASK_INSTRUMENT },
-  { id: "4", image: AssetKeys.IMAGE_TASK_LEARNING },
-  { id: "5", image: AssetKeys.IMAGE_TASK_PLAYING },
-  { id: "6", image: AssetKeys.IMAGE_TASK_READING },
-  { id: "7", image: AssetKeys.IMAGE_TASK_SHOES },
+  { id: "1", label: "Dressing", image: AssetKeys.IMAGE_TASK_DRESSING },
+  { id: "2", label: "Eating", image: AssetKeys.IMAGE_TASK_EATING },
+  { id: "3", label: "Instrument", image: AssetKeys.IMAGE_TASK_INSTRUMENT },
+  { id: "4", label: "Learning", image: AssetKeys.IMAGE_TASK_LEARNING },
+  { id: "5", label: "Playing", image: AssetKeys.IMAGE_TASK_PLAYING },
+  { id: "6", label: "Reading", image: AssetKeys.IMAGE_TASK_READING },
+  { id: "7", label: "Putting on shoes", image: AssetKeys.IMAGE_TASK_SHOES },
+  { id: "8", label: "Putting on shoes", image: AssetKeys.IMAGE_TASK_SHOES },
+  { id: "9", label: "Putting on shoes", image: AssetKeys.IMAGE_TASK_SHOES },
+  { id: "10", label: "Putting on shoes", image: AssetKeys.IMAGE_TASK_SHOES },
+  { id: "11", label: "Putting on shoes", image: AssetKeys.IMAGE_TASK_SHOES },
 ];
 
 function taskContainer({}){
@@ -25,12 +29,14 @@ function taskContainer({}){
                 data={ images }
                 keyExtractor={(item) => item.id}
                 numColumns={2}
+                showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
                     <View style={style.item}>
                         <Image source={ item.image } style={ style.image }/>
-                        <LowLevelComponents.Text cStyle={style.imageOverlay}>
-                            {item.id}
-                        </LowLevelComponents.Text>
+                        <View style={style.imageOverlay}>
+                            <LowLevelComponents.Text tKey={item.label}/>
+                        </View>
+                        
                     </View>
                 )}
             />

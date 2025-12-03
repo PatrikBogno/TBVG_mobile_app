@@ -4,8 +4,7 @@ import styleGlobal from '../styleGlobal';
 var style = StyleSheet.create({
     container: {
         width: '94%',
-        height: 'auto',
-        marginTop: '4%',
+        height: '95%',
     },
 
     item: {
@@ -13,7 +12,9 @@ var style = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
         maxWidth: '48%',
-        margin: '1%',
+        margin: '2%',
+        marginTop: '3%',
+        marginBottom: '5%',
         minHeight: 50,
     },
 
@@ -29,15 +30,16 @@ var style = StyleSheet.create({
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 20,
-        width: 50,
-        borderTopWidth: 1,
+        height: 25,
+        width: 'auto',
+        paddingLeft: 5,
+        paddingRight: 5,
+        borderWidth: 1,
         borderTopLeftRadius: 10,
-        borderTopColor: styleGlobal.colors.borders,
-        borderLeftWidth: 1,
-        borderLeftColor: styleGlobal.colors.borders,
+        borderColor: styleGlobal.colors.borders,
+        borderBottomRightRadius: 10,
         backgroundColor: styleGlobal.colors.secondaryLight
-    }
+    },
 })
 
 module.exports = style;

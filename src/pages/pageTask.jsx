@@ -7,16 +7,17 @@ function Task() {
     let style = StyleKeys.styleTaskPage;
 
     return (
-       <ScrollView showsVerticalScrollIndicator={false} style={style.containerScroll}>
-            <View style={style.container}>
-                <Components.ComponentContainer> 
-                    <Components.LowLevelComponents.Text tKey={TranslationKeys.TASK_TITLE} cStyle={style.pageTitle}/>
-                </Components.ComponentContainer>
-                <Components.ComponentContainer>
-                    <Components.TaskContainer/>
-                </Components.ComponentContainer>
-            </View>  
-        </ScrollView>   
+        <View style={style.container}>
+            <Components.ComponentContainer> 
+                <Components.LowLevelComponents.Text tKey={TranslationKeys.TASK_TITLE} cStyle={style.pageTitle}/>
+            </Components.ComponentContainer>
+            <Components.ComponentContainer cStyle={style.containerTask}>
+                <Components.TaskContainer/>
+            </Components.ComponentContainer>
+            <Components.ComponentContainer> 
+                
+            </Components.ComponentContainer>
+        </View>  
     );
 }
 
