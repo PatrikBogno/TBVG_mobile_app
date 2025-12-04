@@ -1,3 +1,5 @@
+import { Dimensions } from "react-native";
+
 const global_style = {
     
     colors: {
@@ -20,6 +22,11 @@ const global_style = {
         sizeHeaderBig: 24,
         familyNormal: 'Roboto',
         familyHeader: 'Syncopate',
+    },
+
+    sizes: {
+        windowHeight: Dimensions.get('window').height,
+        windowWidth: Dimensions.get('window').width
     }
 };
 

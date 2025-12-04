@@ -1,9 +1,11 @@
-import React from 'react';
-import { View, FlatList, Image, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import { View, FlatList, Image, TouchableOpacity, Pressable } from "react-native";
+import { Portal } from 'react-native-portalize';
 
 import StyleKeys from '../../styles/styleKeys';
 import { AssetKeys } from '../../assets/assetKeys';
 import LowLevelComponents from '../lowLevelComponents';
+import TaskPortalContainer from './taskPortalContainer';
 
 
 const images = [
@@ -22,8 +24,16 @@ const images = [
 
 function taskContainer({}){
     let style = StyleKeys.styleTaskContainer;
+    const [visibility, setVisibility] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const onTaskPress = async (item) => {
+        setVisibility(true);
+        setSelectedItem(item);
+    }
 
     return (
+        <>
         <View style={style.container}>
             <FlatList
                 data={ images }
@@ -31,18 +41,33 @@ function taskContainer({}){
                 numColumns={2}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <TouchableOpacity activeOpacity={0.6} style={style.itemContainer}>
+                    <TouchableOpacity 
+                        activeOpacity={0.6} 
+                        style={style.itemContainer}
+                        onPress={() => onTaskPress(item)}>
                         <View style={style.item}>
                             <Image source={ item.image } style={ style.image }/>
                             <View style={style.imageOverlay}>
                                 <LowLevelComponents.Text tKey={item.label}/>
                             </View>
-                            
                         </View>
                     </TouchableOpacity>
                 )}
             />
         </View>
+
+        <Portal>        
+            {visibility && (
+                <Pressable
+                    style={style.overlay}
+                    onPress={() => setVisibility(false)}>
+                    <Pressable onPress={(e) => e.stopPropagation()} style={style.containerPortal}>
+                        <TaskPortalContainer item={selectedItem} />
+                    </Pressable>
+                </Pressable>
+            )}
+        </Portal>
+        </>
     )
 }
 

@@ -1,3 +1,5 @@
+import { Icons } from "./icons/icons";
+
 export const AssetKeys = {
     // Images
     IMAGE_MAIN_PAGE: require('./images/main_page.png'),
@@ -22,4 +24,6 @@ export const AssetKeys = {
     IMAGE_TASK_SLEEPING: require('./images/task/sleeping.png'),
     IMAGE_TASK_WASHING_HANDS: require('./images/task/washing_hands.png'),
     IMAGE_TASK_WASHING_TEETH: require('./images/task/washing_teeth.png'),
+
+    Icons,
 }

@@ -2,6 +2,7 @@ import { View, ScrollView } from "react-native";
 import Components from "../components/components.js";
 import StyleKeys from "../styles/styleKeys.js";
 import { TranslationKeys } from "../translations/translationKeys";
+import { Icons } from "../assets/icons/icons";
 
 function Task() {
     let style = StyleKeys.styleTaskPage;
@@ -19,7 +20,7 @@ function Task() {
                     <Components.Button tKey={TranslationKeys.TASK_SAVE}/>
                 </Components.ComponentContainer>
                 <Components.ComponentContainer cStyle={style.buttonContainerRight}> 
-                    
+                    <Icons.Plus style={style.icon}/>
                 </Components.ComponentContainer>
             </View>
         </View>  

@@ -7,6 +7,18 @@ var style = StyleSheet.create({
         height: '95%',
     },
 
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1000,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+    },
+
     itemContainer: {
         maxWidth: '48%',
         margin: '1%',
@@ -43,6 +55,13 @@ var style = StyleSheet.create({
         borderBottomRightRadius: 10,
         backgroundColor: styleGlobal.colors.secondaryLight
     },
+
+    containerPortal: {
+        height: '68%',
+        width: '90%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 })
 
 module.exports = style;

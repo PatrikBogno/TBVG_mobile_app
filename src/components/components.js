@@ -6,7 +6,7 @@ import Divider from "./Divider/divider";
 import DropdownMenu from "./Dropdown/dropdown";
 import Slider from "./Slider/slider";
 import Button from "./Button/button";
-import TaskContainer from "./TaskContainer/taskContainer";
+import TaskContainer from "./Task/taskContainer";
 import LowLevelComponents from "./lowLevelComponents";
 
 const Components = {
