@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Image } from "react-native";
+import { View, FlatList, Image, TouchableOpacity } from "react-native";
 
 import StyleKeys from '../../styles/styleKeys';
 import { AssetKeys } from '../../assets/assetKeys';
@@ -31,13 +31,15 @@ function taskContainer({}){
                 numColumns={2}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    <View style={style.item}>
-                        <Image source={ item.image } style={ style.image }/>
-                        <View style={style.imageOverlay}>
-                            <LowLevelComponents.Text tKey={item.label}/>
+                    <TouchableOpacity activeOpacity={0.6} style={style.itemContainer}>
+                        <View style={style.item}>
+                            <Image source={ item.image } style={ style.image }/>
+                            <View style={style.imageOverlay}>
+                                <LowLevelComponents.Text tKey={item.label}/>
+                            </View>
+                            
                         </View>
-                        
-                    </View>
+                    </TouchableOpacity>
                 )}
             />
         </View>

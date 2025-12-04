@@ -5,7 +5,8 @@
     "paragraph_2": "When choosing images, you have two options to choose from, namely a pre-made image or the option to upload your own image."
   },
   "task":{
-    "title": "Saved tasks"
+    "title": "Saved tasks",
+    "save":"Save tasks to esp"
   },
   "settings": {
     "app": {

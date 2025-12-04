@@ -7,14 +7,17 @@ var style = StyleSheet.create({
         height: '95%',
     },
 
+    itemContainer: {
+        maxWidth: '48%',
+        margin: '1%',
+        marginTop: '3%',
+        marginBottom: '5%',
+    },
+
     item: {
         flex: 1,
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
-        maxWidth: '48%',
-        margin: '2%',
-        marginTop: '3%',
-        marginBottom: '5%',
         minHeight: 50,
     },
 
@@ -33,7 +36,7 @@ var style = StyleSheet.create({
         height: 25,
         width: 'auto',
         paddingLeft: 5,
-        paddingRight: 5,
+        paddingRight: 7,
         borderWidth: 1,
         borderTopLeftRadius: 10,
         borderColor: styleGlobal.colors.borders,

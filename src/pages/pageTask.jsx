@@ -14,9 +14,14 @@ function Task() {
             <Components.ComponentContainer cStyle={style.containerTask}>
                 <Components.TaskContainer/>
             </Components.ComponentContainer>
-            <Components.ComponentContainer> 
-                
-            </Components.ComponentContainer>
+            <View style={style.containerButtons}>
+                <Components.ComponentContainer cStyle={style.buttonContainerLeft}> 
+                    <Components.Button tKey={TranslationKeys.TASK_SAVE}/>
+                </Components.ComponentContainer>
+                <Components.ComponentContainer cStyle={style.buttonContainerRight}> 
+                    
+                </Components.ComponentContainer>
+            </View>
         </View>  
     );
 }

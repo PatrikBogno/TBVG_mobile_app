@@ -7,6 +7,7 @@ export enum TranslationKeys {
 
     // Task
     TASK_TITLE = 'task.title',
+    TASK_SAVE = 'task.save',
 
     // Settings
     SETTING_APP_TITLE = 'settings.app.title',

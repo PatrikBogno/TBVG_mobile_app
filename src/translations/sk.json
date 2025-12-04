@@ -5,7 +5,8 @@
     "paragraph_2": "Pri výbere obrázkov máte na výber z dvoch možností a to predpripravený obrázok alebo možnosť nahrať vlastný obrázok."
   },
   "task":{
-    "title": "Saved tasks"
+    "title": "Saved tasks",
+    "save":"Save tasks to esp"
   },
   "settings": {
     "app": {
