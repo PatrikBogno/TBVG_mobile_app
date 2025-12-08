@@ -4,6 +4,7 @@ import { Host } from "react-native-portalize";
 
 import Navigation from "./src/navigation/navigation";
 import { useAppResources } from "./src/hooks/useAppResources";
+import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 
 function App() {
   const resourcesLoaded = useAppResources();
@@ -11,11 +12,13 @@ function App() {
   if ( !resourcesLoaded ) return <ActivityIndicator/>
 
   return (
-    <Host>
-      <View style={{ flex: 1 }}>
-        <Navigation />
-      </View>
-    </Host>
+    <ActionSheetProvider>
+      <Host>
+          <View style={{ flex: 1 }}>
+              <Navigation />
+          </View>
+      </Host>
+    </ActionSheetProvider>
   );
 }
 

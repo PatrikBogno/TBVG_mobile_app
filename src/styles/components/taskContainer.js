@@ -57,7 +57,7 @@ var style = StyleSheet.create({
     },
 
     containerPortal: {
-        height: '68%',
+        height: '50%',
         width: '90%',
         alignItems: 'center',
         justifyContent: 'center'

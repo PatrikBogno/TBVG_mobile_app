@@ -8,27 +8,86 @@ var style = StyleSheet.create({
         backgroundColor: styleGlobal.colors.secondaryNeutral,
         flex: 1,
         flexDirection: 'column',
+        alignItems: 'center',
+        borderColor: styleGlobal.colors.borders,
+        borderWidth: 1,
+        borderRadius: 15
     },
 
     containerTitle: {
-        flex: 1,
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row'
+        width: '80%',
+        marginTop: '2%'
     },
 
     title: {
         fontFamily: styleGlobal.fonts.familyNormal,
-        fontSize: styleGlobal.fonts.sizeHeaderBig
+        fontSize: styleGlobal.fonts.sizeHeaderBig,
+        textAlign: 'center',
+        width: '100%'
+    },
+
+    titleEdit: {
+        backgroundColor: styleGlobal.colors.secondaryLight,
+        borderColor: styleGlobal.colors.borders,
+        borderWidth: 1,
+        borderRadius: 15
+    },
+
+    containerImage: {
+        width: '95%',
+        flex: 6,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    image: {
+        width: '100%',
+        height: 200,
+        borderColor: styleGlobal.colors.borders,
+        borderWidth: 2,
+        borderRadius: 15
+    },
+
+    imageOverlay: {
+        position: 'absolute',
+        top: 8,
+        bottom: 0,
+        right: 0,
+        left: 0,
+        height: 200,
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        borderRadius: 15,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    iconEditImage: {
+        width: 55,
+        height: 55,
+        strokeWidth: 1.8,
+        stroke: styleGlobal.colors.secondaryNeutral
+    },
+
+    containerButtons: {
+        width: '90%',
+        flex: 3,
+        flexDirection: 'row-reverse',
+        alignItems: 'center'
     },
 
     containerIcon: {
-        position: 'absolute',
-        top: 0,
-        right: '5%',
-        bottom: 0,
+        height: 55,
+        width: 55,
         justifyContent: 'center',
         alignItems: 'center',
+        borderColor: styleGlobal.colors.borders,
+        borderWidth: 2,
+        borderRadius: 20,
+        marginRight: '5%',
+        backgroundColor: styleGlobal.colors.secondaryLight
     },
 
     icon: {
@@ -36,25 +95,6 @@ var style = StyleSheet.create({
         height: 35,
         strokeWidth: 1.8,
     },
-
-    containerIconCancel: {
-        position: 'absolute',
-        top: 0,
-        right: '18%',
-        bottom: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-    containerImage: {
-        flex: 5,
-        backgroundColor: 'red'
-    },
-
-    containerButtons: {
-        flex: 1,
-    }
-
 })
 
 module.exports = style;

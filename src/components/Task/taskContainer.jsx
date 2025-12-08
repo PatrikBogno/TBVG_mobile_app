@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, FlatList, Image, TouchableOpacity, Pressable } from "react-native";
 import { Portal } from 'react-native-portalize';
 
@@ -7,6 +7,7 @@ import { AssetKeys } from '../../assets/assetKeys';
 import LowLevelComponents from '../lowLevelComponents';
 import TaskPortalContainer from './taskPortalContainer';
 
+import { BackHandler } from "react-native";
 
 const images = [
   { id: "1", label: "Dressing", image: AssetKeys.IMAGE_TASK_DRESSING },
@@ -31,6 +32,23 @@ function taskContainer({}){
         setVisibility(true);
         setSelectedItem(item);
     }
+
+    useEffect(() => {
+        const onBackPress = () => {
+            if (visibility) {
+                setVisibility(false);   
+                return true;            
+            }
+            return false;               
+        };
+
+        const subscription = BackHandler.addEventListener(
+            "hardwareBackPress",
+            onBackPress
+        );
+
+        return () => subscription.remove();
+    }, [visibility]);
 
     return (
         <>

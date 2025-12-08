@@ -18,6 +18,8 @@ const style = React.StyleSheet.create({
     },
     header: {
         flex: 10,
+        borderBottomWidth: 2,
+        borderBottomColor: styleGlobal.colors.borders,
     },
     containerPage: {
         flex: 80,
