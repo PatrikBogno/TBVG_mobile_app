@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState } from "react";
 import { NavigationContainer, useNavigationContainerRef } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -33,25 +33,25 @@ function RootStack() {
 }
 
 function Navigation(){
-    const navigationRef = useNavigationContainerRef();
-    const [route, setCurrentRoute] = useState("Main");
+  const navigationRef = useNavigationContainerRef();
+  const [route, setCurrentRoute] = useState("Main");
 
-    return(
-        <NavigationContainer
-            ref={navigationRef}
-            onReady={() => {
-            const current = navigationRef.current?.getCurrentRoute()?.name;
-            setCurrentRoute(current);
-            }}
-            onStateChange={() => {
-            const current = navigationRef.current?.getCurrentRoute()?.name;
-            if (current) setCurrentRoute(current);
-            }}>
-            <GlobalLayout route={route}>
-                <RootStack/>
-            </GlobalLayout>
-        </NavigationContainer>
-    );
+  return(
+    <NavigationContainer
+        ref={navigationRef}
+        onReady={() => {
+        const current = navigationRef.current?.getCurrentRoute()?.name;
+        setCurrentRoute(current);
+        }}
+        onStateChange={() => {
+        const current = navigationRef.current?.getCurrentRoute()?.name;
+        if (current) setCurrentRoute(current);
+        }}>
+        <GlobalLayout route={route}>
+            <RootStack/>
+        </GlobalLayout>
+    </NavigationContainer>
+  );
 }
 
 export default Navigation;

@@ -8,13 +8,14 @@ const style = React.StyleSheet.create({
         height: React.Dimensions.get("screen").height,
         backgroundColor: styleGlobal.colors.primary,
     },
+
     containerSafeArea: {  
         flex: 1,
-        height: '100%',
         flexDirection: 'column',
         alignItems: 'stretch',
         justifyContent: 'space-between',
         padding: 0,
+
     },
     header: {
         flex: 10,
@@ -27,6 +28,7 @@ const style = React.StyleSheet.create({
     footer: {
         flex: 10,
     },
+
 })
 
 module.exports = style;

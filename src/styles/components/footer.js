@@ -1,4 +1,3 @@
-import jsxRuntime from 'react/jsx-runtime';
 import styleGlobal from '../styleGlobal';
 
 var React = require('react-native');

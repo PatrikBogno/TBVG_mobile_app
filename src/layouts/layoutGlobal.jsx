@@ -7,6 +7,7 @@ import StyleKeys from "../styles/styleKeys";
 
 const GlobalLayout = ({ children, route }) => {
     let style = StyleKeys.styleGlobalLayout;
+
     const navigation = useNavigation();
 
     return (
@@ -22,7 +23,7 @@ const GlobalLayout = ({ children, route }) => {
                     <View style={style.footer}>
                         <Components.Footer navigation={ navigation } current_route={ route }/>
                     </View>
-                </SafeAreaView>
+                </SafeAreaView>    
             </SafeAreaProvider>
         </View>
     );
