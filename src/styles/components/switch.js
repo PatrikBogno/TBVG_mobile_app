@@ -9,6 +9,7 @@ var style = React.StyleSheet.create({
         width: '80%',
         alignItems: 'center',
         justifyContent: 'center',
+        margin: '2%'
     },
 
     containerTitle: {

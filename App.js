@@ -7,18 +7,18 @@ import { useAppResources } from "./src/hooks/useAppResources";
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
 
-
 import * as NavigationBar from 'expo-navigation-bar';
 import * as StatusBar from 'expo-status-bar';
 
 import StyleKeys from "./src/styles/styleKeys";
+import ServiceKeys from "./src/services/serviceKeys";
 
 function App() {
   const resourcesLoaded = useAppResources();
   let style = StyleKeys.styleGlobal;
-
+  ServiceKeys.serviceTaskHandler.init();
   useEffect(() => {
-    changeNavigationBarColor(style.colors.primary, false)
+    changeNavigationBarColor(style.colors.primary, false);
     StatusBar.setStatusBarStyle("dark");
     NavigationBar.setButtonStyleAsync("dark");
   }, []);

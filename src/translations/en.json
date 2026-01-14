@@ -6,7 +6,7 @@
   },
   "task":{
     "title": "Saved tasks",
-    "save":"Save tasks to esp"
+    "button": "Create new task"
   },
   "settings": {
     "app": {

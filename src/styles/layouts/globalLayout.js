@@ -21,6 +21,7 @@ const style = React.StyleSheet.create({
         flex: 10,
         borderBottomWidth: 2,
         borderBottomColor: styleGlobal.colors.borders,
+        justifyContent: 'center'
     },
     containerPage: {
         flex: 80,

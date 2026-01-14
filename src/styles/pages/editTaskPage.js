@@ -19,23 +19,72 @@ var style = React.StyleSheet.create({
         height: '74%'
     },
 
-    containerButtons: {
+    containerTaskList: {
+        width: '94%',
+        height: '95%',
+    },
+
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1000,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+    },
+
+    itemContainer: {
+        maxWidth: '48%',
+        margin: '1%',
+        marginTop: '3%',
+        marginBottom: '5%',
+    },
+
+    item: {
         flex: 1,
-        flexDirection: 'row',
-        width: '92%'
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+        minHeight: 50,
+        minWidth: '100%'
     },
 
-    buttonContainerLeft: {
-        flex: 5,
+    image: {
+        width: '100%',
+        height: 110,
+        borderWidth: 2,
+        borderRadius: 10,
+        borderColor: styleGlobal.colors.borders,
+    },
+
+    imageOverlay: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 25,
         width: 'auto',
-        marginRight: '4%'
+        paddingLeft: 5,
+        paddingRight: 7,
+        borderWidth: 1,
+        borderTopLeftRadius: 10,
+        borderColor: styleGlobal.colors.borders,
+        borderBottomRightRadius: 10,
+        backgroundColor: styleGlobal.colors.secondaryLight
     },
 
-    buttonContainerRight: {
-        flex: 1.1,
-        width: 'auto'
+    containerPortal: {
+        height: '50%',
+        width: '90%',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-    
+
+    buttonContainer: {
+        width: '92%',
+    },
+
     icon: {
         height: 40,
         width: 40,

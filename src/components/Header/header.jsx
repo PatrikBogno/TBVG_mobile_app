@@ -6,7 +6,7 @@ function Header() {
     
     return (
         <View style={style.container}>
-            <Text style={style.text}>The Bedside Visual Guide</Text>
+            <Text style={style.text} numberOfLines={1}>The Bedside Visual Guide</Text>
         </View>    
     );
 }

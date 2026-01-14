@@ -4,15 +4,16 @@ var React = require('react-native');
 
 var style = React.StyleSheet.create({
     container: {
-        width: React.Dimensions.get("screen").width,
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '6%',   
     },
 
     text: {
+        maxWidth: '100%',
         fontSize: styleGlobal.fonts.sizeHeaderSmall,
         fontFamily: styleGlobal.fonts.familyHeader,
+        textAlign: 'center'
     }
 })
 

@@ -3,6 +3,7 @@ import Components from "../components/components.js";
 import { TranslationKeys } from "../translations/translationKeys.ts";
 import StyleKeys from "../styles/styleKeys.js";
 import { AssetKeys } from "../assets/assetKeys.js";
+import ServiceKeys from "../services/serviceKeys.js";
 
 const languages = [
   { value: "sk", label: "Slovenčina", image: { uri: "https://flagsapi.com/SK/flat/64.png" } },
@@ -24,6 +25,14 @@ const sounds = [
 
 function Settings() {
     let style = StyleKeys.styleSettingsPage;
+    let storage = ServiceKeys.serviceStorage;
+
+    const sendData = async () => {
+        const settings = await storage.getItem("espSettings");
+        //TODO: send data to esp here
+
+        console.log(settings);
+    }
 
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={style.containerScroll}>
@@ -75,7 +84,7 @@ function Settings() {
                         helperKey="sound"
                         data={sounds}/>
                     <Components.Divider/>
-                    <Components.Button tKey={TranslationKeys.SETTING_ESP_SAVE_TITLE}/>
+                    <Components.Button tKey={TranslationKeys.SETTING_ESP_SAVE_TITLE} onPress={sendData}/>
                 </Components.ComponentContainer>
             </View>  
         </ScrollView>
