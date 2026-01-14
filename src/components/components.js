@@ -20,7 +20,6 @@ const Components = {
     Slider,
     Button,
     Task,
-    TaskContainer,
     SearchBar,
     LowLevelComponents
 };
