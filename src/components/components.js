@@ -8,6 +8,7 @@ import Slider from "./Slider/slider";
 import Button from "./Button/button";
 import TaskContainer from "./Task/taskContainer";
 import LowLevelComponents from "./lowLevelComponents";
+import SearchBar from "./SearchBar/SearchBar"
 
 const Components = {
     Header,
@@ -19,6 +20,7 @@ const Components = {
     Slider,
     Button,
     TaskContainer,
+    SearchBar,
     LowLevelComponents
 };
 
