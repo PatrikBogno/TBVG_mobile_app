@@ -20,6 +20,14 @@
         "close": "Zavrieť"
       }
     },
+    "esp_name":{
+      "esp_name_title": "Nájdi tvoje zariadenie",
+      "esp_find_device": "Nájdi zariadenie",
+      "esp_device_found": "Zariadenie úspešne nájdené.",
+      "esp_device_found_err": "Zariadenie nebolo možné nájsť.",
+      "stored_esp_name": "Vaše meno zariadenia:",
+      "deleteEspName": "Vymazať meno"
+    },
     "esp": {
       "title":"Nastavenia esp",
       "sound": {
@@ -35,5 +43,12 @@
       },
       "save": "Uložiť nastavenia na esp"
     }
+  },
+  "error":{
+    "general_error_title": "CHYBA!",
+    "esp_not_connected": "Zariadenie nebolo pripojené!"
+  },
+  "test":{
+    "send_image": "Odosli obrazok"
   }
 }

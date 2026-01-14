@@ -1,5 +1,4 @@
 import { TouchableOpacity} from "react-native";
-
 import LowLevelComponents from "../lowLevelComponents.js";
 import StyleKeys from "../../styles/styleKeys.js";
 

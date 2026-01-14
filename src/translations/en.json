@@ -20,6 +20,14 @@
         "close": "Close"
       }
     },
+    "esp_name":{
+      "esp_name_title": "Nájdi tvoje zariadenie",
+      "esp_find_device": "Find device",
+      "esp_device_found": "Device successfully found.",
+      "esp_device_found_err": "Device not found.",
+      "stored_esp_name": "Your device:",
+      "deleteEspName": "Delete name"
+    },
     "esp": {
       "title":"Esp settings",
       "sound": {
@@ -35,5 +43,12 @@
       },
       "save": "Save settings to esp"
     }
+  },
+  "error":{
+    "general_error_title": "ERROR!",
+    "esp_not_connected": "Device not connected!"
+  },
+  "test":{
+    "send_image": "Send Image"
   }
 }
