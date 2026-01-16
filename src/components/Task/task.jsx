@@ -7,6 +7,9 @@ import StyleKeys from '../../styles/styleKeys';
 import { AssetKeys } from '../../assets/assetKeys';
 import LowLevelComponents from '../lowLevelComponents';
 
+//odoslanie obrazka
+import { handleSendImage } from '../../services/handleSendImage';
+
 function TaskPortalContainer({ item }) {
     let style = StyleKeys.styleTaskPortalContainer;
 
@@ -35,9 +38,11 @@ function TaskPortalContainer({ item }) {
         setIsEditing(false);
         if (isNewItem) {
             ServiceKeys.serviceTaskHandler.addTask(tempValue, imageSource ?? "");
+            handleSendImage(tempValue, imageSource);
         }
         else {
             ServiceKeys.serviceTaskHandler.updateTask(item.id, tempValue, imageSource ?? item.image);
+            handleSendImage(tempValue, imageSource);
         }
     };
 
