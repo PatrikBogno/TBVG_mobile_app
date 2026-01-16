@@ -18,7 +18,7 @@ function TaskPortalContainer({ item }) {
     };
 
     const isNewItem = item === null;
-
+    const [isNewController, setNewController] = useState(isNewItem);
     const [isEditing, setIsEditing] = useState(isNewItem);
     const [labelValue, setLabelValue] = useState(isNewItem ? "" : item.label);
     const [tempValue, setTempValue] = useState(isNewItem ? "" : item.label);
@@ -34,8 +34,12 @@ function TaskPortalContainer({ item }) {
     };
 
     const finishEditing = () => {
+        if (tempValue == null || tempValue == "" || imageSource == null) {
+            return;
+        }
         setLabelValue(tempValue);
         setIsEditing(false);
+        setNewController(false);
         if (isNewItem) {
             ServiceKeys.serviceTaskHandler.addTask(tempValue, imageSource ?? "");
             handleSendImage(tempValue, imageSource);
@@ -118,10 +122,14 @@ function TaskPortalContainer({ item }) {
                         <Pressable onPress={finishEditing} style={style.containerIcon}>
                             <AssetKeys.Icons.Checkmark style={style.icon} />
                         </Pressable>
-
-                        <Pressable onPress={cancelEditing} style={style.containerIcon}>
-                            <AssetKeys.Icons.Cancel style={style.icon} />
-                        </Pressable>
+                        {!isNewController ? (
+                            <Pressable onPress={cancelEditing} style={style.containerIcon}>
+                                <AssetKeys.Icons.Cancel style={style.icon} />
+                            </Pressable>
+                        ) : (
+                            <>
+                            </>
+                        )}
                     </>
                 ) : (
                     <Pressable onPress={startEditing} style={style.containerIcon}>
