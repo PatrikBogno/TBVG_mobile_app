@@ -6,7 +6,10 @@
   },
   "day":{
     "title": "Day activities",
-    "button": "Create new day"
+    "button": "Create new day",
+    "item": {
+        "button": "Add new task"
+    }
   },
   "task":{
     "title": "Saved tasks",

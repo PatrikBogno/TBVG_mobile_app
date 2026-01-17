@@ -8,6 +8,7 @@ export enum TranslationKeys {
     // Day
     DAY_TITLE = 'day.title',
     DAY_BUTTON = 'day.button',
+    DAY_ITEM_BUTTON = 'day.item.button',
 
     // Task
     TASK_TITLE = 'task.title',

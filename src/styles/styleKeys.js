@@ -1,3 +1,4 @@
+import styleAddTaskComponent from "./components/addTaskComponent";
 import styleButton from "./components/button";
 import styleComponentContainer from "./components/componentContainer";
 import styleDayComponent from "./components/dayComponent";
@@ -29,6 +30,7 @@ import styleGlobal from "./styleGlobal";
 
 const StyleKeys = {
     //Components
+    styleAddTaskComponent,
     styleButton,
     styleComponentContainer,
     styleDayComponent,

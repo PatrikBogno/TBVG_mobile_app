@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { View, ScrollView, Text, Pressable } from "react-native";
 import { Portal } from 'react-native-portalize';
 import Components from "../components/components.js";
@@ -15,11 +15,22 @@ function Day() {
     const [days, setDays] = useState([]);
     const [selectedDay, setSelectedDay] = useState(null);
     const [isEditorVisible, setEditorVisible] = useState(false);
+    const daysRef = useRef(days);
 
     /* -------------------- STORAGE -------------------- */
 
     const loadDays = async () => {
         const storedDays = await storage.getItem(DAYS_KEY);
+
+        if (typeof storedDays === 'string') {
+            try {
+            storedDays = JSON.parse(storedDays);
+            } catch (e) {
+            console.error("Failed to parse storedTasks", e);
+            storedDays = [];
+            }
+        }
+
         setDays(Array.isArray(storedDays) ? storedDays : []);
     };
 
@@ -27,13 +38,17 @@ function Day() {
         loadDays();
     }, []);
 
+    useEffect(() => {
+        daysRef.current = days;
+    }, [days]);
+
     /* -------------------- DAY ACTIONS -------------------- */
 
     const createNewDay = () => {
         const newDay = {
             id: `day-${Date.now()}`,
             label: null,
-            tasks: []
+            tasks: null
         };
 
         setSelectedDay(newDay);
@@ -43,6 +58,7 @@ function Day() {
     const openDayEditor = (day) => {
         setSelectedDay(day);
         setEditorVisible(true);
+
     };
 
     const closeDayEditor = () => {
@@ -50,15 +66,51 @@ function Day() {
         setEditorVisible(false);
     };
 
-
-    // !!! NEEDS CHANGES - update happens in dayEditor finishEditing()
     const handleDayUpdated = async (updatedDay) => {
-        
-        setDays([...days, updatedDay]);
-        closeDayEditor();
+        setDays(days => {
+            const dayExists = days.some(day => day.id === updatedDay.id);
+            
+            if (dayExists) {
+                // Update existing day (only label, keep tasks)
+                return days.map(day =>
+                    day.id === updatedDay.id
+                        ? { ...day, label: updatedDay.label }
+                        : day
+                );
+            }
 
-        console.log(days);
+            return [...days, updatedDay];
+        });
+    
+    closeDayEditor();
     };
+
+    const logDaysDeep = async () => {
+        console.log('UPDATED DAYS (STRING):');
+        console.log(JSON.stringify(daysRef.current, null, 2));
+    };
+
+    
+
+
+    const handleDayTaskUpdate = async (updatedDay, udpatedTasks) => {
+        setDays(days => {
+            
+            const updated = days.map(day =>
+                day.id === updatedDay.id
+                ? { ...day, tasks: udpatedTasks }
+                : day
+            );
+
+            return updated;
+        });
+
+        
+    
+    closeDayEditor();
+    };
+
+
 
     
 
@@ -89,7 +141,7 @@ function Day() {
                     style={style.dayBlock}
                     onPress={() => openDayEditor(day)}
                 >
-                    <Components.DayComponent day={day}/>
+                    <Components.DayComponent day={day} handleTask={handleDayTaskUpdate}/>
                 </Pressable>
             ))}
 
@@ -100,21 +152,28 @@ function Day() {
             />
             </Components.ComponentContainer>
 
+            <Components.ComponentContainer>
+            <Components.Button
+                tKey={TranslationKeys.DAY_BUTTON}
+                onPress={logDaysDeep}
+            />
+            </Components.ComponentContainer>
+
             <Portal>
             {isEditorVisible && (
                 <Pressable
                 style={style.overlay}
                 onPress={closeDayEditor}
                 >
-                <Pressable
-                    style={style.containerPortal}
-                    onPress={(e) => e.stopPropagation()}
-                >
-                    <Components.DayEditor
-                        item={selectedDay}
-                        onDayUpdated={handleDayUpdated}
-                    />
-                </Pressable>
+                    <Pressable
+                        style={style.containerPortal}
+                        onPress={(e) => e.stopPropagation()}
+                    >
+                        <Components.DayEditor
+                            item={selectedDay}
+                            onDayUpdated={handleDayUpdated}
+                        />
+                    </Pressable>
                 </Pressable>
             )}
             </Portal>

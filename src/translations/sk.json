@@ -6,7 +6,10 @@
   },
   "day":{
     "title": "Aktivity pre deň",
-    "button": "Vytvor nový deň"
+    "button": "Vytvor nový deň",
+    "item": {
+        "button": "Pridať aktivitu"
+    }
   },
   "task":{
     "title": "Uložené aktivity",
