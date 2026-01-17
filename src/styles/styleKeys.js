@@ -1,5 +1,7 @@
 import styleButton from "./components/button";
 import styleComponentContainer from "./components/componentContainer";
+import styleDayComponent from "./components/dayComponent";
+import styleDayEditor from "./components/dayEditor";
 import styleDivider from "./components/divider";
 import styleDropdown from "./components/dropdown";
 import styleDropdownDesign from "./components/dropdownDesign";
@@ -29,6 +31,8 @@ const StyleKeys = {
     //Components
     styleButton,
     styleComponentContainer,
+    styleDayComponent,
+    styleDayEditor,
     styleDivider,
     styleDropdown,
     styleDropdownDesign,

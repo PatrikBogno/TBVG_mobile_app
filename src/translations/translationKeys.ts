@@ -5,6 +5,10 @@ export enum TranslationKeys {
     MAIN_PARAGRAPH_1 = 'main.paragraph_1',
     MAIN_PARAGRAPH_2 = 'main.paragraph_2',
 
+    // Day
+    DAY_TITLE = 'day.title',
+    DAY_BUTTON = 'day.button',
+
     // Task
     TASK_TITLE = 'task.title',
     TASK_BUTTON = 'task.button',

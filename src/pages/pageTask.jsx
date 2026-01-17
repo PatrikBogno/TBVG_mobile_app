@@ -46,6 +46,9 @@ function Task() {
     const [visibility, setVisibility] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
     const [tasks, setTasks] = useState([]);
+    const [isDayEditorVisible, setDayEditorVisible] = useState(false);
+    const [selectedDay, setSelectedDay] = useState(null);
+
 
     const handleTaskPress = useCallback((item) => {
         setSelectedItem(item);
