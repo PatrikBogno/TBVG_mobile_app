@@ -23,13 +23,44 @@ function Week() {
     { id: 7, label: TranslationKeys.WEEK_SUNDAY, tasksForDay: null },
   ]);
 
-  const [tasks] = useState([
+  const [days, setDays] = useState([]);
+
+  const loadDays = async () => {
+    let storedDays = await storage.getItem("days");
+
+    if (typeof storedDays === 'string') {
+        try {
+        storedDays = JSON.parse(storedDays);
+        } catch (e) {
+        console.error("Failed to parse storedDays", e);
+        setDays([]);
+        return;
+        }
+    }
+
+    if (storedDays && typeof storedDays === 'object') {
+        setDays(Object.values(storedDays));
+    } else {
+        setDays([]);
+    }
+};
+
+
+useEffect(() => {
+
+  loadDays();
+
+},);
+
+  /*const [tasks] = useState([
     { id: "day-1768580118410", label: "Pracovný deň", tasks: [] },
     { id: "day-1768580120570", label: "Víkend", tasks: [] },
     { id: "day-1768580305727", label: "Voľný deň", tasks: [] },
     { id: "day-1768580306653", label: "Hudobný deň", tasks: [] },
     { id: "day-1768580307307", label: "Športový deň", tasks: [] },
-  ]);
+  ]);*/
+
+  //const tasks = storage.getItem("days");
 
   /* =========================
      LOAD TASKS FROM STORAGE
@@ -138,7 +169,7 @@ function Week() {
                 onPress={(e) => e.stopPropagation()}
               >
                 <Components.WeekComponent
-                  items={tasks}
+                  items={days}
                   dayOfWeek={weekDay}
                   onAddTask={addTaskToDay}
                   onClose={() => setVisibility(false)}

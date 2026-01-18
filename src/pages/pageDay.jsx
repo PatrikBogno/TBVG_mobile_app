@@ -5,6 +5,7 @@ import Components from "../components/components.js";
 import StyleKeys from "../styles/styleKeys.js";
 import { TranslationKeys } from "../translations/translationKeys.ts";
 import ServiceKeys from "../services/serviceKeys.js";
+import { sendData } from "../services/sendData.js";
 
 function Day() {
     const style = StyleKeys.styleDayPage;
@@ -44,6 +45,8 @@ function Day() {
 
     const saveDays = async () => {
         const storedDays = await storage.getItem(DAYS_KEY);
+
+        //console.log(days);
         
         if (storedDays) {
             storage.updateItem(DAYS_KEY, days);
@@ -72,6 +75,7 @@ function Day() {
 
         setSelectedDay(newDay);
         setEditorVisible(true);
+       // console.log(newDay);
     };
 
     const openDayEditor = (day) => {
@@ -98,9 +102,11 @@ function Day() {
                 );
             }
 
+            //console.log(updatedDay);
+
             return [...days, updatedDay];
         });
-    
+
         saveDays();
         closeDayEditor();
     };
@@ -110,23 +116,30 @@ function Day() {
         console.log(JSON.stringify(daysRef.current, null, 2));
     };
 
-    const handleDayTaskUpdate = async (updatedDay, udpatedTasks) => {
-        setDays(days => {
-            
-            const updated = days.map(day =>
+    const handleDayTaskUpdate = async (updatedDay, updatedTasks) => {
+        setDays(prevDays => {
+            const nextDays = prevDays.map(day =>
                 day.id === updatedDay.id
-                ? { ...day, tasks: udpatedTasks }
-                : day
+                    ? { ...day, tasks: updatedTasks }
+                    : day
             );
 
-            return updated;
-        });
+            const message=nextDays.find(d => d.id === updatedDay.id);
+            console.log(
+                message
+            );
 
+            sendData(message);
+    
+            return nextDays;
+        });
+    
         saveDays();
         closeDayEditor();
     };
+    
 
-    //logDaysDeep();
+    ///logDaysDeep();
 
     /*const removeAllDays = async () => {
         storage.removeItem("days");
