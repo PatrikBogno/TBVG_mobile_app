@@ -19,20 +19,25 @@ export const runDiscovery = async ({
 }) => {
   if (discoveryDoneRef.current) return;
 
-  const device = await discoverESP32(espName);
+  try {
+    const device = await discoverESP32(espName);
 
-  discoveryDoneRef.current = true;
-  stopDiscovery(intervalRef);
+    discoveryDoneRef.current = true;
+    stopDiscovery(intervalRef);
 
-  setFoundDevices(prev =>
-    prev.some(d => d.ip === device.ip) ? prev : [...prev, device]
-  );
+    setFoundDevices(prev =>
+      prev.some(d => d.ip === device.ip) ? prev : [...prev, device]
+    );
 
-  await storage.setItem("ESP_Name", espName);
-  connectToESP(device);
+    await storage.setItem("ESP_Name", espName);
+    connectToESP(device);
 
-  setStoredName(espName);
-  setConnectedDevice(device);
+    setStoredName(espName);
+    setConnectedDevice(device);
+
+  } catch (err) {
+    console.log("Discovery failed:", err.message);
+  }
 };
 
 export const handleStartDiscovery = async ({
@@ -54,8 +59,7 @@ export const handleStartDiscovery = async ({
   setConnectedDevice(null);
   setDiscoveryError(false);
 
-  await runDiscovery({ espName: searchEspName, storage, discoveryDoneRef, intervalRef, setFoundDevices,setConnectedDevice, setStoredName,
-  });
+  await runDiscovery({ espName: searchEspName, storage, discoveryDoneRef, intervalRef, setFoundDevices,setConnectedDevice, setStoredName});
 
   intervalRef.current = setInterval(async () => {
     if (callCountRef.current >= 2 || discoveryDoneRef.current) {

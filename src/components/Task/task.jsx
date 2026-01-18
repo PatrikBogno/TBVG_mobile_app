@@ -17,6 +17,9 @@ function TaskPortalContainer({ item }) {
         return AssetKeys[image] ?? { uri: image };
     };
 
+    //ServiceKeys.serviceTaskHandler.reset();
+    //ServiceKeys.serviceStorage.removeItem("tasks");
+
     const isNewItem = item === null;
 
     const [isEditing, setIsEditing] = useState(isNewItem);
@@ -33,16 +36,20 @@ function TaskPortalContainer({ item }) {
         setIsEditing(true);
     };
 
-    const finishEditing = () => {
+    const finishEditing = async () => {
         setLabelValue(tempValue);
         setIsEditing(false);
         if (isNewItem) {
-            ServiceKeys.serviceTaskHandler.addTask(tempValue, imageSource ?? "");
-            handleSendImage(tempValue, imageSource);
+            const test = await ServiceKeys.serviceTaskHandler.addTask(tempValue, imageSource ?? "");
+            console.log(test.id);
+            const stringId = String(test.id);
+            console.log(stringId);
+            handleSendImage(tempValue, imageSource, stringId);
         }
         else {
-            ServiceKeys.serviceTaskHandler.updateTask(item.id, tempValue, imageSource ?? item.image);
-            handleSendImage(tempValue, imageSource);
+            await ServiceKeys.serviceTaskHandler.updateTask(item.id, tempValue, imageSource ?? item.image);
+            const stringId = String(item.id);
+            handleSendImage(tempValue, imageSource, stringId);
         }
     };
 

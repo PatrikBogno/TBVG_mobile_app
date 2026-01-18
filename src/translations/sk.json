@@ -50,5 +50,19 @@
   },
   "test":{
     "send_image": "Odosli obrazok"
+  },
+
+  "week":{
+    "title": "Týždenný rozvrh",
+    "monday": "Pondelok",
+    "tuesday": "Utorok",
+    "wednesday": "Streda",
+    "thursday": "Štvrtok",
+    "friday": "Piatok",
+    "saturday": "Sobota",
+    "sunday": "Nedeľa",
+    "assign_tasks": "Priradiť úlohy",
+    "delete_day": "Vymazať deň"
   }
+
 }

@@ -50,5 +50,19 @@
   },
   "test":{
     "send_image": "Send Image"
+  },
+
+  "week":{
+    "title": "Week schedule",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "assign_tasks": "Assign tasks",
+    "delete_day": "Delete day"
   }
+
 }

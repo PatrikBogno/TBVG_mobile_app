@@ -2,12 +2,9 @@ import { Alert } from "react-native";
 import { sendJsonToESP } from "./wsClientConnection.js";
 
 export const sendData = async ({
-    connectedDevice,
-    storage,
-    setSearchEspName,
-    data,
+    data
   }) => {
-    if (!connectedDevice) {
+    /*if (!connectedDevice) {
       const savedName = await storage.getItem("ESP_Name");
   
       if (savedName) {
@@ -16,13 +13,13 @@ export const sendData = async ({
           "Zariadenie bolo odpojené"
         );
 
-        setSearchEspName(savedName);
+        //setSearchEspName(savedName);
         return;
       }
   
       Alert.alert("Chyba", "Zariadenie nebolo pripojené");
       return;
-    }
+    }*/
   
     sendJsonToESP(data);
   };

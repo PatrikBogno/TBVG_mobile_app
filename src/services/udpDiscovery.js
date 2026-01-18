@@ -27,6 +27,7 @@ export function discoverESP32(espName,timeout = 3000) {
     socket.on('message', (msg, rinfo) => {
       const response = msg.toString()
       // očakávame: ESP32LCD;IP;PORT
+      console.log(response)
       if (response.startsWith('ESP32LCD')) {
         const [, ip, port] = response.split(';')
         socket.close()

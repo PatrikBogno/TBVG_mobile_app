@@ -13,6 +13,7 @@ import styleTaskContainer from "./components/taskContainer";
 import styleTaskPortalContainer from "./components/taskPortalContainer";
 import styleText from "./components/text";
 import styleSearchBar from "./components/SearchBar";
+import styleWeekPortalContainer from "./components/weekPortalContainer";
 
 import styleGlobalLayout from "./layouts/globalLayout";
 
@@ -40,6 +41,7 @@ const StyleKeys = {
     styleSwitch,
     styleTaskContainer,
     styleTaskPortalContainer,
+    styleWeekPortalContainer,
     styleText,
     styleSearchBar,
 

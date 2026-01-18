@@ -8,7 +8,8 @@ import Slider from "./Slider/slider";
 import Button from "./Button/button";
 import Task from "./Task/task";
 import LowLevelComponents from "./lowLevelComponents";
-import SearchBar from "./SearchBar/SearchBar"
+import SearchBar from "./SearchBar/SearchBar";
+import WeekComponent from "./WeekComponent/weekComponent";
 
 const Components = {
     Header,
@@ -21,6 +22,7 @@ const Components = {
     Button,
     Task,
     SearchBar,
+    WeekComponent,
     LowLevelComponents
 };
 

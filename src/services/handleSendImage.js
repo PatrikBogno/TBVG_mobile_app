@@ -12,7 +12,7 @@ global.Buffer = global.Buffer || Buffer;
 const WIDTH = 700;
 const HEIGHT = 350;
 
-export const handleSendImage = async (tempValue, imageSource) => {
+export const handleSendImage = async (tempValue, imageSource, itemId) => {
     try {
 
       // zmena rozlisenia na pozadovanu velkost
@@ -58,7 +58,7 @@ export const handleSendImage = async (tempValue, imageSource) => {
       const bin = Buffer.concat([header, pixelData]);
 
       // odoslanie na esp
-      await sendImageToESP(new Uint8Array(bin), `${tempValue}.bin`);
+      await sendImageToESP(new Uint8Array(bin), `${itemId}.bin`);
 
       Alert.alert("OK", "LVGL image úspešne odoslaný");
 

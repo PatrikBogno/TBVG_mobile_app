@@ -41,6 +41,18 @@ export enum TranslationKeys {
     GENERAL_ERROR_TITLE = 'error.general_error_title',
 
     //TEST
-    TEST_SEND_IMAGE = 'test.send_image'
+    TEST_SEND_IMAGE = 'test.send_image',
+
+    //WEEK
+    WEEK_TITLE = 'week.title',
+    WEEK_MONDAY = 'week.monday',
+    WEEK_TUESDAY = 'week.tuesday',
+    WEEK_WEDNESDAY = 'week.wednesday',
+    WEEK_THURSDAY =  'week.thursday',
+    WEEK_FRIDAY = 'week.friday',
+    WEEK_SATURDAY = 'week.saturday',
+    WEEK_SUNDAY = 'week.sunday',
+    WEEK_ASSIGN_TASK = 'week.assign_tasks',
+    WEEK_DELETE_DAY = 'week.delete_day'
 
 }

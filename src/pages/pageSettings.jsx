@@ -68,12 +68,15 @@ function Settings() {
           return;
         }
       
-        await sendData({
+        /*await sendData({
           connectedDevice,
           storage,
           setSearchEspName,
           data: data,
-        });
+        });*/
+        await sendData({
+            data: data,
+          });
       };
       
     //funkcie pre nacitanie a vymazanie mena pod search barom

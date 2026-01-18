@@ -23,6 +23,8 @@ export function sendJsonToESP(json) {
     return;
   }
 
+  console.log("JSON:", json)
+
   ws.send(JSON.stringify({
     type: "json",
     payload: json
