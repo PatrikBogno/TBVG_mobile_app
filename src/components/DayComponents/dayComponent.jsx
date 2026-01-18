@@ -19,7 +19,6 @@ function DayComponent({ day, handleTask }) {
     };
 
     const closeTask = () => {
-        
         setEditorVisible(false);
     };
 
@@ -44,8 +43,8 @@ function DayComponent({ day, handleTask }) {
             time: formattedTime,
         };
 
-        setTasks(prevTasks => {
-            const updatedTasks = [...prevTasks, newTask];
+        setTasks(tasks => {
+            const updatedTasks = [...tasks, newTask];
             handleTask(day, updatedTasks);
             return updatedTasks;
         });
@@ -62,7 +61,7 @@ function DayComponent({ day, handleTask }) {
                         <LowLevelComponents.Text tKey={day.label}/>
                     </View>
 
-                    {tasks.map((task, index) => (
+                    {Array.isArray(tasks) && tasks.map((task, index) => (
                         <DayTaskComponent 
                             key={`${task.id}-${index}`} 
                             task={task.label} 

@@ -35,6 +35,7 @@ function Day() {
 
         if (storedDays && typeof storedDays === 'object') {
             setDays(Object.values(storedDays));
+            console.log(days);
         } else {
             setDays([]);
         }
@@ -66,7 +67,7 @@ function Day() {
         const newDay = {
             id: `day-${Date.now()}`,
             label: null,
-            tasks: null
+            tasks: []
         };
 
         setSelectedDay(newDay);
@@ -100,17 +101,14 @@ function Day() {
             return [...days, updatedDay];
         });
     
+        saveDays();
         closeDayEditor();
     };
 
     const logDaysDeep = async () => {
         console.log('UPDATED DAYS (STRING):');
         console.log(JSON.stringify(daysRef.current, null, 2));
-        saveDays();
     };
-
-    
-
 
     const handleDayTaskUpdate = async (updatedDay, udpatedTasks) => {
         setDays(days => {
@@ -124,14 +122,11 @@ function Day() {
             return updated;
         });
 
-        
-    
+        saveDays();
         closeDayEditor();
     };
 
-
-
-    
+    //logDaysDeep();
 
     /*const removeAllDays = async () => {
         storage.removeItem("days");
@@ -154,15 +149,19 @@ function Day() {
                 />
             </Components.ComponentContainer>
 
-            {days.map(day => (
+            {Array.isArray(days) && days.map(day => (
                 <Pressable
                     key={day.id}
                     style={style.dayBlock}
                     onPress={() => openDayEditor(day)}
                 >
-                    <Components.DayComponent day={day} handleTask={handleDayTaskUpdate}/>
+                    <Components.DayComponent
+                    day={day}
+                    handleTask={handleDayTaskUpdate}
+                    />
                 </Pressable>
             ))}
+
 
             <Components.ComponentContainer>
             <Components.Button
@@ -171,12 +170,12 @@ function Day() {
             />
             </Components.ComponentContainer>
 
-            <Components.ComponentContainer>
+            {/*<Components.ComponentContainer>
             <Components.Button
-                tKey={TranslationKeys.DAY_BUTTON}
+                tKey={"debug button"}
                 onPress={logDaysDeep}
             />
-            </Components.ComponentContainer>
+            </Components.ComponentContainer>*/}
 
             <Portal>
             {isEditorVisible && (
