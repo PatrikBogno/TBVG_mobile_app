@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Pressable } from "react-native";
 import StyleKeys from "../../styles/styleKeys";
 import { Portal } from 'react-native-portalize';
@@ -22,6 +22,14 @@ function DayComponent({ day, handleTask }) {
         
         setEditorVisible(false);
     };
+
+    const loadTask = () => {
+        setTasks(day.tasks);
+    }
+
+    useEffect(() => {
+        loadTask();
+    },);
 
     /**
      * @param task - The task object from AddTaskComponent

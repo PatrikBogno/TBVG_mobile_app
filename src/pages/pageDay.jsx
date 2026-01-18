@@ -11,6 +11,7 @@ function Day() {
     const storage = ServiceKeys.serviceStorage;
 
     const DAYS_KEY = "days";
+    const TASK_KEY = "tasks";
 
     const [days, setDays] = useState([]);
     const [selectedDay, setSelectedDay] = useState(null);
@@ -20,19 +21,36 @@ function Day() {
     /* -------------------- STORAGE -------------------- */
 
     const loadDays = async () => {
-        const storedDays = await storage.getItem(DAYS_KEY);
+        let storedDays = await storage.getItem(DAYS_KEY);
 
         if (typeof storedDays === 'string') {
             try {
             storedDays = JSON.parse(storedDays);
             } catch (e) {
-            console.error("Failed to parse storedTasks", e);
-            storedDays = [];
+            console.error("Failed to parse storedDays", e);
+            setDays([]);
+            return;
             }
         }
 
-        setDays(Array.isArray(storedDays) ? storedDays : []);
+        if (storedDays && typeof storedDays === 'object') {
+            setDays(Object.values(storedDays));
+        } else {
+            setDays([]);
+        }
     };
+
+
+    const saveDays = async () => {
+        const storedDays = await storage.getItem(DAYS_KEY);
+        
+        if (storedDays) {
+            storage.updateItem(DAYS_KEY, days);
+        }
+        else {
+            storage.setItem(DAYS_KEY, days);
+        }
+    }
 
     useEffect(() => {
         loadDays();
@@ -82,12 +100,13 @@ function Day() {
             return [...days, updatedDay];
         });
     
-    closeDayEditor();
+        closeDayEditor();
     };
 
     const logDaysDeep = async () => {
         console.log('UPDATED DAYS (STRING):');
         console.log(JSON.stringify(daysRef.current, null, 2));
+        saveDays();
     };
 
     
@@ -107,7 +126,7 @@ function Day() {
 
         
     
-    closeDayEditor();
+        closeDayEditor();
     };
 
 
