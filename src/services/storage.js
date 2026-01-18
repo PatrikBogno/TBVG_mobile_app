@@ -56,6 +56,18 @@ class storage {
     }
   }
 
+  static async getAllKeys() {
+    try {
+      const keys = await AsyncStorage.getAllKeys();      
+
+      console.log("All AsyncStorage keys:", keys);
+
+      return null; 
+    } catch (error) {
+      console.error("Error reading AsyncStorage:", error);
+    }
+  }
+
   static async printAllData() {
     try {
       const keys = await AsyncStorage.getAllKeys();      

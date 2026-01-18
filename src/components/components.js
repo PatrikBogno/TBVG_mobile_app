@@ -10,6 +10,8 @@ import Task from "./Task/task";
 import LowLevelComponents from "./lowLevelComponents";
 import SearchBar from "./SearchBar/SearchBar";
 import WeekComponent from "./WeekComponent/weekComponent";
+import DayComponent from "./DayComponents/dayComponent";
+import DayEditor from "./DayComponents/dayEditor";
 
 const Components = {
     Header,
@@ -23,6 +25,8 @@ const Components = {
     Task,
     SearchBar,
     WeekComponent,
+    DayComponent,
+    DayEditor,
     LowLevelComponents
 };
 

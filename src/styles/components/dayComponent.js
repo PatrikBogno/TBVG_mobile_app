@@ -3,20 +3,16 @@ import styleGlobal from '../styleGlobal';
 var React = require('react-native');
 
 var style = React.StyleSheet.create({
-    containerScroll: {
-        minHeight: '100%',
-        backgroundColor: styleGlobal.colors.secondaryLight,
-    },
-
     container: {
-        height: '100%',
         width: React.Dimensions.get("screen").width,
         alignItems: 'center',
-        paddingBottom: '4%',
+        
     },
 
-    title: {
-        fontSize: styleGlobal.fonts.sizeHeaderSmall,
+    containerItem: {
+        width: '100%',
+        Height: '10%',
+        alignItems: 'center'
     },
 
     overlay: {
@@ -32,12 +28,14 @@ var style = React.StyleSheet.create({
     },
 
     containerPortal: {
-        height: '25%',
+        minHeight: '50%',
         width: '90%',
         marginBottom: '40%',
         alignItems: 'center',
         justifyContent: 'center'
     },
+
+
 })
 
 module.exports = style;

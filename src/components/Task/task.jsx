@@ -21,7 +21,7 @@ function TaskPortalContainer({ item }) {
     //ServiceKeys.serviceStorage.removeItem("tasks");
 
     const isNewItem = item === null;
-
+    const [isNewController, setNewController] = useState(isNewItem);
     const [isEditing, setIsEditing] = useState(isNewItem);
     const [labelValue, setLabelValue] = useState(isNewItem ? "" : item.label);
     const [tempValue, setTempValue] = useState(isNewItem ? "" : item.label);
@@ -37,8 +37,12 @@ function TaskPortalContainer({ item }) {
     };
 
     const finishEditing = async () => {
+        if (tempValue == null || tempValue == "" || imageSource == null) {
+            return;
+        }
         setLabelValue(tempValue);
         setIsEditing(false);
+        setNewController(false);
         if (isNewItem) {
             const test = await ServiceKeys.serviceTaskHandler.addTask(tempValue, imageSource ?? "");
             console.log(test.id);
@@ -125,10 +129,14 @@ function TaskPortalContainer({ item }) {
                         <Pressable onPress={finishEditing} style={style.containerIcon}>
                             <AssetKeys.Icons.Checkmark style={style.icon} />
                         </Pressable>
-
-                        <Pressable onPress={cancelEditing} style={style.containerIcon}>
-                            <AssetKeys.Icons.Cancel style={style.icon} />
-                        </Pressable>
+                        {!isNewController ? (
+                            <Pressable onPress={cancelEditing} style={style.containerIcon}>
+                                <AssetKeys.Icons.Cancel style={style.icon} />
+                            </Pressable>
+                        ) : (
+                            <>
+                            </>
+                        )}
                     </>
                 ) : (
                     <Pressable onPress={startEditing} style={style.containerIcon}>
